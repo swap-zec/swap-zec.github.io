@@ -1,58 +1,1187 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Swap ZEC — Exchange Zcash to BTC, USDT or ETH</title>
-<meta name="description" content="Swap ZEC to BTC, USDT or ETH. Start your Zcash exchange, review rates and fees, check address compatibility and send ZEC with clear transaction guidance.">
-<link rel="canonical" href="https://insert_url/">
-<meta property="og:title" content="Swap ZEC — Exchange Zcash to BTC, USDT or ETH">
-<meta property="og:description" content="Swap ZEC to BTC, USDT or ETH. Review your quote, confirm the receiving network and start your Zcash exchange.">
-<meta property="og:url" content="https://insert_url/">
+<title>Zcash Swap — Exchange ZEC for BTC, Shielded or Transparent</title>
+<meta name="description" content="Run a Zcash Swap from a shielded or transparent address to BTC. Compare non-custodial exchangers and atomic swaps, check confirmation times, and keep self-custody of your ZEC the whole way.">
+<link rel="canonical" href="https://swap-zec.github.io/">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swap ZEC — Exchange Zcash to BTC, USDT or ETH">
-<meta name="twitter:description" content="Swap ZEC with clear guidance on exchange rates, network fees and Zcash address compatibility.">
-<meta name="theme-color" content="#171a1d">
+<meta property="og:title" content="Zcash Swap">
+<meta property="og:description" content="Run a Zcash Swap from a shielded or transparent address to BTC. Compare non-custodial exchangers and atomic swaps, check confirmation times, and keep self-custody of your ZEC the whole way.">
+<meta property="og:url" content="https://swap-zec.github.io/">
+<meta property="og:image" content="https://swap-zec.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Zcash Swap">
+<meta name="twitter:description" content="Run a Zcash Swap from a shielded or transparent address to BTC. Compare non-custodial exchangers and atomic swaps, check confirmation times, and keep self-custody of your ZEC the whole way.">
+<meta name="twitter:image" content="https://swap-zec.github.io/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://swap-zec.github.io/#website", "url": "https://swap-zec.github.io/", "name": "Zcash Swap — Exchange ZEC for BTC, Shielded or Transparent"}, {"@type": "WebPage", "@id": "https://swap-zec.github.io/#webpage", "url": "https://swap-zec.github.io/", "name": "Zcash Swap — Exchange ZEC for BTC, Shielded or Transparent", "isPartOf": {"@id": "https://swap-zec.github.io/#website"}, "description": "Run a Zcash Swap from a shielded or transparent address to BTC. Compare non-custodial exchangers and atomic swaps, check confirmation times, and keep self-custody of your ZEC the whole way.", "datePublished": "2026-10-10", "dateModified": "2026-10-10"}, {"@type": "SoftwareApplication", "name": "Zcash Swap", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://swap-zec.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Swaps"}, {"@type": "ListItem", "position": 3, "name": "Zcash Swap"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can I run a Zcash Swap directly from a shielded address?", "acceptedAnswer": {"@type": "Answer", "text": "Not directly. Most non-custodial exchangers and atomic swap scripts need a transparent, verifiable transaction, so ZEC held in a shielded pool is usually deshielded to a t-addr first, then swapped from there."}}, {"@type": "Question", "name": "Is a Zcash Swap custodial?", "acceptedAnswer": {"@type": "Answer", "text": "A non-custodial exchanger or an atomic swap never takes ongoing custody of your funds. You send ZEC to a deposit address or lock script and receive BTC in return, with your keys controlling both balances the entire time."}}, {"@type": "Question", "name": "How long does a ZEC to BTC swap take?", "acceptedAnswer": {"@type": "Answer", "text": "The ZEC leg confirms in minutes given Zcash's roughly 75-second block time. The BTC leg is usually the slower half, since Bitcoin blocks land roughly every ten minutes and most traders wait for several confirmations before treating the swap as final."}}, {"@type": "Question", "name": "What is an atomic swap and why use one for ZEC?", "acceptedAnswer": {"@type": "Answer", "text": "An atomic swap uses a time-locked script so either both sides of a ZEC-for-BTC trade complete or both refund automatically. It removes the exchanger as a counterparty, trading directly against another trader's locked funds instead."}}, {"@type": "Question", "name": "Why does a shielded balance need to be deshielded before swapping?", "acceptedAnswer": {"@type": "Answer", "text": "Swap scripts and exchanger software verify a transaction's visible inputs and outputs the same way they would for Bitcoin. A shielded transaction hides exactly that information by design, so it cannot be checked by a script that needs to see it."}}, {"@type": "Question", "name": "Does swapping ZEC for BTC require an account?", "acceptedAnswer": {"@type": "Answer", "text": "No. A non-custodial exchanger needs only a deposit address and a payout address, and an atomic swap needs only your wallet and the swap script. Neither requires sign-up or identity verification for typical amounts."}}, {"@type": "Question", "name": "How do I confirm a Zcash Swap actually settled?", "acceptedAnswer": {"@type": "Answer", "text": "Check the ZEC transaction on a Zcash block explorer and the BTC payout on a Bitcoin block explorer using the transaction IDs the exchanger or swap script provides. Once both show the required confirmations, the swap is settled."}}]}]}</script>
 <style>
-:root{color-scheme:dark;--ingot:#f4b728;--paper:#f5f3ec;--muted:#b1b6b8;--base:#171a1d;--edge:#34393d;--slab:#202529}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:var(--base);color:var(--paper);font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.65}a{color:inherit;text-underline-offset:5px}a:hover{color:var(--ingot)}button{font:inherit}img{object-fit:contain}a:focus-visible,button:focus-visible,summary:focus-visible,[role=link]:focus-visible{outline:3px solid var(--ingot);outline-offset:5px}.folio{width:min(1120px,calc(100% - 64px));margin-inline:auto}.skip-ledger{position:absolute;left:16px;top:-80px;background:var(--ingot);color:#171a1d;padding:10px;z-index:5}.skip-ledger:focus{top:12px}.mast{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:23px;border-bottom:1px solid var(--edge)}.wordmark{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:20px;letter-spacing:-.7px}.wordmark img{width:31px;height:31px}.mast nav{display:flex;align-items:center;gap:27px;font-size:13px}.mast nav>a{text-decoration:none}.gold-action{display:inline-flex;align-items:center;justify-content:center;gap:24px;background:var(--ingot);color:#171a1d!important;text-decoration:none;font-weight:700;padding:13px 22px;border-radius:6px}.gold-action:hover{background:#ffcc52}.mast .gold-action{padding:9px 16px}.opening{display:grid;grid-template-columns:1.05fr 1fr;gap:68px;align-items:start;padding:58px 0 45px}.asset-note{display:flex;align-items:center;gap:10px;color:var(--ingot);font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase}.asset-note:before{content:"";width:22px;height:2px;background:var(--ingot)}h1{font-size:clamp(58px,6.3vw,82px);font-weight:500;letter-spacing:-5px;line-height:1.08;margin:24px 0}h1 span{color:var(--ingot)}.opening-copy>p{max-width:460px;color:var(--muted);font-size:18px;line-height:1.7;margin:0 0 26px}.opening-copy .small-trail{font-size:12px;margin:17px 0 0}.route-mini{display:flex;gap:23px;margin-top:35px;padding-top:20px;border-top:1px solid var(--edge);font-size:12px;color:var(--muted)}.route-mini strong{display:block;color:var(--paper);font-size:14px}.transfer-slip{background:#24292d;border:1px solid #4b4a3c;border-radius:14px;cursor:pointer;overflow:hidden;box-shadow:0 18px 45px #0002;transition:border-color .2s,transform .2s}.transfer-slip:hover{border-color:var(--ingot);transform:translateY(-2px)}.slip-head{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;font-size:14px}.slip-head span:last-child{color:var(--muted);font-size:11px;letter-spacing:1px}.slip-body{padding:0 24px 24px}.asset-box{background:var(--base);padding:17px 19px;border:1px solid var(--edge);border-radius:8px}.asset-caption{color:var(--muted);font-size:12px;margin-bottom:8px}.asset-line{display:flex;justify-content:space-between;align-items:center;gap:14px}.asset-symbol{display:flex;align-items:center;gap:11px;font-size:23px;font-weight:600}.asset-symbol img{width:34px;height:34px}.asset-name{color:var(--muted);font-size:13px}.transfer-divider{height:34px;display:flex;align-items:center;justify-content:center;color:var(--ingot);font-size:21px}.address-cue{display:flex;gap:8px;align-items:center;margin:18px 0 9px;font-size:11px}.address-cue span{border:1px solid #555348;border-radius:4px;padding:3px 8px;color:#dfd8c3}.slip-guidance{font-size:12px;line-height:1.55;color:var(--muted);margin:0 0 18px}.slip-open{display:flex;justify-content:space-between;align-items:center;background:var(--ingot);color:#171a1d;padding:13px 17px;border-radius:5px;font-size:14px;font-weight:700}.slip-foot{border-top:1px solid var(--edge);padding:12px 24px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:12px}.chapter{padding:38px 0;border-top:1px solid var(--edge)}.chapter-head{display:flex;justify-content:space-between;gap:24px;align-items:baseline;margin-bottom:22px}.chapter-head>span{color:var(--muted);font-size:12px}h2{font-size:28px;line-height:1.25;letter-spacing:-.8px;font-weight:500;margin:0 0 20px}.chapter-head h2{margin:0}h3{font-size:17px;line-height:1.4;margin:0 0 9px;font-weight:600}p{margin:0 0 16px}.pair-shelf{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.pair-ticket{display:block;padding:23px;background:var(--slab);border:1px solid var(--edge);border-radius:8px;text-decoration:none}.pair-ticket:hover{border-color:#b09343;color:var(--paper)}.pair-images{display:flex;align-items:center;gap:12px;margin-bottom:18px;color:var(--muted)}.pair-images img{width:29px;height:29px}.pair-ticket p{font-size:13px;color:var(--muted);margin:0 0 17px}.pair-go{color:var(--ingot);font-size:12px}.instruction-rail{list-style:none;counter-reset:steps;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin:25px 0 0;padding:0}.instruction-rail li{counter-increment:steps}.instruction-rail li:before{content:"0" counter(steps);font-size:12px;color:var(--ingot);display:block;margin-bottom:12px}.instruction-rail p,.address-sheet p,.fee-note p,.repair-grid p,.film-copy p{font-size:14px;color:var(--muted);margin-bottom:0}.address-fees{display:grid;grid-template-columns:1.2fr 1fr;gap:55px}.address-sheet{border-left:2px solid var(--ingot);padding-left:22px}.address-sheet h3{margin-top:18px}.address-sheet h3:first-child{margin-top:0}.fact-link{font-size:12px;display:inline-block;margin-top:16px;color:var(--ingot)}.fee-note{background:var(--slab);border-radius:8px;padding:25px}.fee-note h2{font-size:25px}.fee-note dl{margin:0}.fee-note dt{font-size:14px;margin-top:15px;color:var(--paper)}.fee-note dd{margin:3px 0 0;font-size:13px;color:var(--muted)}.repair-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}.check-chain{margin:22px 0 0;padding-top:17px;border-top:1px solid var(--edge);font-size:13px;color:var(--muted)}.check-chain a{color:var(--ingot)}.film-row{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:42px}.film-stage{aspect-ratio:16/9;background:#0f1113;border:1px solid var(--edge);border-radius:9px;overflow:hidden}.film-stage button{width:100%;height:100%;border:0;padding:0;position:relative;background:#202529;cursor:pointer;color:white;display:block}.film-stage img{width:100%;height:100%;object-fit:cover;opacity:.65}.film-stage button:after{content:"▶";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:60px;height:60px;border-radius:50%;background:var(--ingot);color:#171a1d;font-size:22px;box-shadow:0 0 0 9px #171a1d44}.film-stage iframe{width:100%;height:100%;border:0;display:block}.film-copy .asset-note{margin-bottom:16px}.film-credit{margin-top:16px;font-size:12px!important}.community-plaque{margin-top:28px;padding:22px 26px;border:1px solid #625538;border-radius:8px;display:flex;justify-content:space-between;align-items:center;gap:25px;background:linear-gradient(105deg,#302c21,#202529)}.community-plaque h3{margin-bottom:3px}.community-plaque p{color:var(--muted);font-size:13px;margin:0}.community-plaque>a{font-size:13px;color:var(--ingot);max-width:260px}.questions{display:grid;grid-template-columns:.75fr 1.25fr;gap:45px}.questions details{border-bottom:1px solid var(--edge)}.questions details:first-child{border-top:1px solid var(--edge)}.questions summary{cursor:pointer;padding:17px 28px 17px 0;font-size:15px;position:relative;list-style:none}.questions summary::-webkit-details-marker{display:none}.questions summary:after{content:"+";position:absolute;right:1px;color:var(--ingot)}.questions details[open] summary:after{content:"−"}.questions details p{color:var(--muted);font-size:14px;margin:0 0 18px}.closing-line{padding:26px 0 32px;display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--edge);font-size:12px;color:var(--muted)}.closing-line a{color:var(--paper)}@media(max-width:850px){.opening{gap:30px}.folio{width:calc(100% - 40px)}.mast nav{gap:16px}.address-fees{gap:30px}.pair-ticket{padding:18px}.opening-copy>p{font-size:16px}h1{font-size:64px}.film-row{gap:26px}}@media(max-width:650px){.folio{width:calc(100% - 32px)}.mast{padding-block:17px;gap:12px}.mast nav>a:not(.gold-action){display:none}.mast .gold-action{font-size:12px;padding:9px 12px}.wordmark{font-size:18px}.opening{grid-template-columns:1fr;padding-top:32px;gap:28px}.opening-copy>p{max-width:100%}h1{margin:18px 0;font-size:66px;letter-spacing:-4px}.route-mini{margin-top:24px;justify-content:space-between;gap:12px}.chapter{padding:29px 0}.chapter-head{display:block}.chapter-head>span{display:block;margin-top:8px}h2{font-size:25px}.pair-shelf,.instruction-rail,.address-fees,.repair-grid,.film-row,.questions{grid-template-columns:1fr;gap:23px}.pair-ticket{position:relative;padding:20px}.pair-images{margin-bottom:12px}.pair-ticket p{margin-bottom:10px}.instruction-rail{gap:18px}.instruction-rail li{padding-left:39px;position:relative}.instruction-rail li:before{position:absolute;left:0;top:2px}.slip-head{padding:18px 20px}.slip-body{padding:0 20px 20px}.slip-foot{padding-inline:20px}.community-plaque{display:block;padding:22px}.community-plaque>a{display:block;margin-top:13px}.questions h2{margin-bottom:0}.closing-line{flex-wrap:wrap}.film-copy{grid-row:1}.fee-note{padding:22px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+:root{--bg:#F7FAFC;--surface:#FFFFFF;--text:#0C1620;--muted:#52606F;--accent:#0369A1;--accent-ink:#FFFFFF;--radius:13px;--display:"Plus Jakarta Sans";--body:"Inter"}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  min-width: 280px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  color: var(--text);
+  background: radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 42rem), var(--bg);
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+  -webkit-font-smoothing: antialiased;
+}
+::selection {
+  color: var(--accent-ink);
+  background: var(--accent);
+}
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition: color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+a:hover {
+  color: color-mix(in srgb, var(--accent) 76%, var(--text));
+}
+a:focus-visible,
+input:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 5px;
+}
+img,
+svg {
+  max-width: 100%;
+  vertical-align: middle;
+}
+img {
+  height: auto;
+}
+input,
+output {
+  font-family: var(--body);
+}
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text);
+  font-family: var(--display);
+  text-wrap: balance;
+}
+p,
+ul,
+ol,
+blockquote,
+figure {
+  margin: 0;
+}
+.c698daa {
+  width: min(100% - 4rem, 1120px);
+  margin-inline: auto;
+}
+.c6b0936 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 92px;
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
+}
+.c54522f {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 750;
+  letter-spacing: -0.045em;
+}
+.cd325d2 {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--accent) 23%, transparent);
+  border-radius: calc(var(--radius) * 0.55);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+  font-size: 1.4rem;
+  line-height: 1;
+}
+.ca43060 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  min-height: 42px;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--text) 14%, transparent);
+  border-radius: calc(var(--radius) * 0.65);
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+  font-size: 0.85rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+.ca43060:hover {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+}
+.c339afa {
+  padding-block: 1.4rem 0.5rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.cb493ca {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.7rem;
+  margin: 0;
+  padding: 0;
+  color: var(--muted);
+  list-style: none;
+}
+.cb493ca ol,
+.cb493ca ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cb493ca li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.cb493ca li + li::before {
+  content: "/";
+  color: color-mix(in srgb, var(--muted) 60%, transparent);
+}
+.cb493ca a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.cb493ca a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.cb493ca [aria-current="page"] {
+  color: var(--text);
+}
+.c5a76fb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: clamp(2.5rem, 6vw, 5rem);
+  text-align: center;
+}
+.cea6b13 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1.25rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+  border-radius: calc(var(--radius) * 2);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.cea6b13::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 10%, transparent);
+}
+.c5a76fb h1 {
+  max-width: 960px;
+  margin: 0;
+  font-size: clamp(2.6rem, 6.1vw, 5.2rem);
+  font-weight: 650;
+  line-height: 1.06;
+  letter-spacing: -0.06em;
+}
+.c5a76fb h1 em,
+.c5a76fb h1 strong,
+.c5a76fb h1 span {
+  color: var(--accent);
+}
+.c5a76fb h1 em {
+  font-style: normal;
+}
+.cdd4f51 {
+  max-width: 720px;
+  margin: 1.5rem auto 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.65vw, 1.15rem);
+  line-height: 1.85;
+  text-wrap: pretty;
+}
+.c99b502 {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  margin-top: clamp(2rem, 4vw, 3.2rem);
+  padding: clamp(1.2rem, 3.5vw, 2.6rem);
+  border: 1px solid color-mix(in srgb, var(--accent) 19%, var(--surface));
+  border-radius: var(--radius);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 5%, var(--surface)), var(--surface) 48%);
+  box-shadow: 0 24px 65px -24px color-mix(in srgb, var(--text) 21%, transparent), 0 4px 14px -7px color-mix(in srgb, var(--accent) 16%, transparent);
+  text-align: left;
+}
+.c99b502::before {
+  position: absolute;
+  inset: -1px 12% auto;
+  height: 2px;
+  content: "";
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 0%, transparent), color-mix(in srgb, var(--accent) 65%, transparent), color-mix(in srgb, var(--accent) 0%, transparent));
+}
+.c5ba1f2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem 1rem;
+  margin-bottom: 1.5rem;
+}
+.c5ba1f2 h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 650;
+  letter-spacing: -0.035em;
+}
+.c5ba1f2 p {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.cc5f41f {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: stretch;
+  gap: 1rem;
+}
+.cbf7558 {
+  min-width: 0;
+  padding: 1.4rem 1.5rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+  border-radius: calc(var(--radius) * 0.7);
+  background: color-mix(in srgb, var(--bg) 65%, var(--surface));
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.cbf7558:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 9%, transparent);
+}
+.c26d711 {
+  border-color: color-mix(in srgb, var(--accent) 18%, transparent);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 8%, var(--surface)), color-mix(in srgb, var(--accent) 3%, var(--surface)));
+}
+.c658513 {
+  display: block;
+  margin-bottom: 0.65rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 550;
+}
+#amount {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface) 0%, transparent);
+  font-family: var(--body);
+  font-size: clamp(1.7rem, 3vw, 2.65rem);
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.3;
+  letter-spacing: -0.045em;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+#amount::-webkit-inner-spin-button,
+#amount::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+#amount::placeholder {
+  color: var(--muted);
+  opacity: 0.65;
+}
+#amount:focus-visible {
+  outline-offset: 3px;
+  outline-width: 2px;
+}
+#amount[aria-invalid="true"] {
+  text-decoration: underline wavy;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+#received {
+  display: block;
+  min-height: 1.3em;
+  color: var(--text);
+  font-size: clamp(1.7rem, 3vw, 2.65rem);
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.3;
+  letter-spacing: -0.045em;
+  overflow-wrap: anywhere;
+}
+.ccd23ee {
+  display: block;
+  margin-top: 0.6rem;
+  color: var(--muted);
+  font-size: 0.73rem;
+  line-height: 1.5;
+}
+.cc77f1b {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-inline: 0.15rem;
+}
+.c785199 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  width: 48px;
+  min-height: 48px;
+  padding: 0.4rem;
+  border: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
+  border-radius: calc(var(--radius) * 0.55);
+  background: var(--surface);
+  box-shadow: 0 4px 10px color-mix(in srgb, var(--text) 4%, transparent);
+  font-size: 0.65rem;
+  line-height: 1.2;
+  text-align: center;
+}
+.c785199 img,
+.c785199 svg {
+  display: block;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+.c7838df {
+  color: var(--accent);
+  font-size: 1.3rem;
+}
+.c63a1b7 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.55fr);
+  align-items: center;
+  gap: 1.5rem 2.5rem;
+  margin-top: 1.4rem;
+}
+.cdbbf18 {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  font-size: 0.8rem;
+}
+.cdbbf18 > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.cdbbf18 dt {
+  color: var(--muted);
+}
+.cdbbf18 dd {
+  margin: 0;
+  color: var(--text);
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.c149a6b {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 56px;
+  padding: 0.9rem 1.3rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 85%, var(--text));
+  border-radius: calc(var(--radius) * 0.65);
+  color: var(--accent-ink);
+  background: linear-gradient(120deg, var(--accent), color-mix(in srgb, var(--accent) 85%, var(--text)));
+  box-shadow: 0 8px 22px -8px color-mix(in srgb, var(--accent) 45%, transparent);
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+.c149a6b:hover {
+  transform: translateY(-2px);
+  color: var(--accent-ink);
+  background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 94%, var(--text)), color-mix(in srgb, var(--accent) 78%, var(--text)));
+  box-shadow: 0 12px 28px -9px color-mix(in srgb, var(--accent) 50%, transparent);
+}
+.c149a6b:active {
+  transform: translateY(0);
+}
+.c149a6b span:last-child {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+.c59941d {
+  min-height: 1.5em;
+  margin-top: 0.8rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+.c59941d[data-invalid="true"] {
+  color: var(--text);
+  font-weight: 600;
+}
+.ccc7fac {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin-block: 1.6rem 4.5rem;
+  padding: 1rem 0;
+  border-block: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+  list-style: none;
+}
+.ccc7fac li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.75rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-align: center;
+}
+.ccc7fac li + li {
+  border-left: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
+}
+.ccc7fac li::before {
+  content: "✓";
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 650;
+}
+.c197a61 {
+  margin-bottom: 4rem;
+  padding: clamp(1.25rem, 3.5vw, 2.75rem);
+  border: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 12px 35px -22px color-mix(in srgb, var(--text) 18%, transparent);
+}
+.c7e25a5 {
+  margin: 0 0 1.6rem;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.045em;
+}
+.c98fb8e {
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+.cbef53a {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--text);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  text-align: left;
+}
+.cbef53a caption {
+  margin-bottom: 1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: left;
+}
+.cbef53a th,
+.cbef53a td {
+  padding: 1.05rem 1.2rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+  vertical-align: top;
+}
+.cbef53a th {
+  width: 31%;
+  color: var(--muted);
+  font-weight: 500;
+}
+.cbef53a td {
+  font-weight: 550;
+}
+.cbef53a tr:nth-child(odd) {
+  background: color-mix(in srgb, var(--accent) 3%, var(--surface));
+}
+.cbef53a tr:last-child > * {
+  border-bottom: 0;
+}
+.cbef53a thead th {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+  font-weight: 650;
+}
+.cc49bc5 {
+  width: min(100%, 860px);
+  margin-inline: auto;
+}
+.c8da3fd {
+  margin-block: 0 3.6rem;
+  padding-bottom: 3.2rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
+  scroll-margin-top: 2rem;
+}
+.ce5299b {
+  margin: 0 0 1.25rem;
+  color: var(--text);
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.045em;
+}
+.c99bb7e {
+  color: var(--muted);
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+.c99bb7e > * + * {
+  margin-top: 1.25rem;
+}
+.c99bb7e h3,
+.c99bb7e h4 {
+  margin-block: 2rem 0.75rem;
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+}
+.c99bb7e h4 {
+  font-size: 1.1rem;
+}
+.c99bb7e strong,
+.c32c299 strong {
+  color: var(--text);
+  font-weight: 650;
+}
+.c99bb7e ul,
+.c99bb7e ol,
+.c32c299 ul,
+.c32c299 ol {
+  padding-left: 1.4rem;
+}
+.c99bb7e li,
+.c32c299 li {
+  padding-left: 0.3rem;
+}
+.c99bb7e li + li,
+.c32c299 li + li {
+  margin-top: 0.65rem;
+}
+.c99bb7e li::marker,
+.c32c299 li::marker {
+  color: var(--accent);
+}
+.c99bb7e li > ul,
+.c99bb7e li > ol {
+  margin-top: 0.65rem;
+}
+.c99bb7e blockquote {
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 calc(var(--radius) * 0.45) calc(var(--radius) * 0.45) 0;
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
+}
+.c99bb7e blockquote p + p {
+  margin-top: 0.8rem;
+}
+.c99bb7e table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  border: 1px solid color-mix(in srgb, var(--text) 12%, transparent);
+  border-radius: calc(var(--radius) * 0.6);
+  background: var(--surface);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  text-align: left;
+  overscroll-behavior-inline: contain;
+}
+.c99bb7e table th,
+.c99bb7e table td {
+  min-width: 8rem;
+  padding: 0.95rem 1.15rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
+  vertical-align: top;
+}
+.c99bb7e table th {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+  font-weight: 600;
+}
+.c99bb7e table tbody tr:nth-child(even) {
+  background: color-mix(in srgb, var(--bg) 65%, var(--surface));
+}
+.c99bb7e table tr:last-child td {
+  border-bottom: 0;
+}
+.c99bb7e table caption {
+  padding: 0.85rem 1.15rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-align: left;
+}
+.c99bb7e code,
+.c99bb7e pre {
+  border-radius: calc(var(--radius) * 0.3);
+  color: var(--text);
+  background: color-mix(in srgb, var(--text) 5%, var(--surface));
+  font-family: var(--body);
+  font-size: 0.9em;
+}
+.c99bb7e code {
+  padding: 0.15em 0.4em;
+}
+.c99bb7e pre {
+  overflow-x: auto;
+  padding: 1.2rem;
+}
+.c99bb7e pre code {
+  padding: 0;
+  background: color-mix(in srgb, var(--surface) 0%, transparent);
+}
+.c99bb7e figure img {
+  display: block;
+  border-radius: calc(var(--radius) * 0.7);
+}
+.c99bb7e figcaption {
+  margin-top: 0.7rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.c439494 {
+  margin-block: 1rem;
+  border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+  border-radius: calc(var(--radius) * 0.7);
+  background: var(--surface);
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+.c439494:hover {
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+.c439494[open] {
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  box-shadow: 0 8px 25px -14px color-mix(in srgb, var(--text) 15%, transparent);
+}
+.ce6b027 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.3rem 1.5rem;
+  border-radius: calc(var(--radius) * 0.7);
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 1.04rem;
+  font-weight: 550;
+  line-height: 1.5;
+  list-style: none;
+  cursor: pointer;
+}
+.ce6b027::-webkit-details-marker {
+  display: none;
+}
+.ce6b027::after {
+  display: grid;
+  flex: 0 0 27px;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  content: "+";
+  border-radius: 50%;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 9%, var(--surface));
+  font-family: var(--body);
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1;
+}
+.c439494[open] > .ce6b027::after {
+  content: "−";
+}
+.c32c299 {
+  padding: 0 1.5rem 1.5rem;
+  color: var(--muted);
+  font-family: var(--body);
+  font-size: 0.95rem;
+  line-height: 1.85;
+}
+.c32c299 > * + * {
+  margin-top: 1rem;
+}
+.c467633 {
+  margin-top: 4rem;
+  padding: 2.2rem 0 2.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+}
+.c467633 .c7e25a5 {
+  margin-bottom: 1.2rem;
+  font-size: 1.35rem;
+}
+.c01f392 {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.c74ddab {
+  min-width: 0;
+  padding: 0.8rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+  border-radius: calc(var(--radius) * 0.45);
+  color: var(--muted);
+  background: color-mix(in srgb, var(--surface) 70%, var(--bg));
+  font-size: 0.82rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.c74ddab a,
+a.c74ddab {
+  color: var(--text);
+  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.c74ddab a:hover,
+a.c74ddab:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+.c0890b2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-top: 1rem;
+  padding-block: 1.7rem 2.2rem;
+  border-top: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.c1332b7 {
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.c278088 span {
+  color: var(--text);
+}
+@media (min-width: 1280px) {
+  .c5a76fb {
+    padding-top: 5.2rem;
+  }
+  .c99b502 {
+    margin-top: 3.4rem;
+  }
+  .cbf7558 {
+    padding-block: 1.6rem 1.3rem;
+  }
+}
+@media (max-width: 900px) {
+  .c698daa {
+    width: min(100% - 3rem, 1120px);
+  }
+  .cc5f41f {
+    gap: 0.65rem;
+  }
+  .cbf7558 {
+    padding: 1.1rem;
+  }
+  .cc77f1b {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .c785199 {
+    width: 38px;
+    min-height: 38px;
+  }
+  .c785199 img,
+  .c785199 svg {
+    width: 25px;
+    height: 25px;
+  }
+  .c7838df {
+    line-height: 1;
+  }
+  .ccc7fac {
+    margin-bottom: 3rem;
+  }
+}
+@media (max-width: 640px) {
+  html {
+    scroll-padding-top: 1rem;
+  }
+  .c698daa {
+    width: calc(100% - 2rem);
+  }
+  .c6b0936 {
+    min-height: 76px;
+    gap: 0.75rem;
+  }
+  .c54522f {
+    gap: 0.5rem;
+    font-size: 1.08rem;
+  }
+  .ca43060 {
+    min-height: 40px;
+    padding: 0.45rem 0.8rem;
+    font-size: 0.78rem;
+  }
+  .c339afa {
+    padding-top: 1rem;
+  }
+  .c5a76fb {
+    padding-top: 2.4rem;
+  }
+  .c5a76fb h1 {
+    font-size: clamp(2.25rem, 10vw, 3.6rem);
+    letter-spacing: -0.05em;
+  }
+  .cdd4f51 {
+    margin-top: 1.1rem;
+    line-height: 1.75;
+  }
+  .c99b502 {
+    padding: 1.1rem;
+  }
+  .c5ba1f2 {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-bottom: 1.1rem;
+  }
+  .cc5f41f {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.7rem;
+  }
+  .cbf7558 {
+    padding: 1.2rem;
+  }
+  #amount,
+  #received {
+    font-size: clamp(1.8rem, 8vw, 2.6rem);
+  }
+  .cc77f1b {
+    flex-direction: row;
+    gap: 0.8rem;
+    padding-block: 0.1rem;
+  }
+  .c785199 {
+    width: 40px;
+    min-height: 40px;
+  }
+  .c63a1b7 {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+  }
+  .cdbbf18 {
+    font-size: 0.78rem;
+  }
+  .c149a6b {
+    min-height: 54px;
+  }
+  .ccc7fac {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    margin-block: 1.4rem 2.6rem;
+    padding-block: 0.5rem;
+  }
+  .ccc7fac li {
+    justify-content: flex-start;
+    padding: 0.7rem 1rem;
+  }
+  .ccc7fac li + li {
+    border-top: 1px solid color-mix(in srgb, var(--text) 6%, transparent);
+    border-left: 0;
+  }
+  .c197a61 {
+    margin-bottom: 2.8rem;
+    padding: 1.2rem;
+  }
+  .c7e25a5 {
+    margin-bottom: 1.2rem;
+  }
+  .cbef53a {
+    font-size: 0.82rem;
+  }
+  .cbef53a th,
+  .cbef53a td {
+    padding: 0.8rem 0.6rem;
+  }
+  .cbef53a th {
+    width: 38%;
+  }
+  .c8da3fd {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.3rem;
+  }
+  .c99bb7e {
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+  .c99bb7e h3 {
+    font-size: 1.2rem;
+  }
+  .c99bb7e blockquote {
+    padding: 1rem 1.15rem;
+  }
+  .ce6b027 {
+    gap: 0.9rem;
+    padding: 1.1rem;
+    font-size: 0.98rem;
+  }
+  .c32c299 {
+    padding: 0 1.1rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  .c467633 {
+    margin-top: 2.6rem;
+    padding-block: 1.8rem;
+  }
+  .c0890b2 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+    padding-block: 1.4rem 1.8rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none;
+    animation: none;
+  }
+  .c149a6b:hover {
+    transform: none;
+  }
+}
+@media print {
+  body {
+    background: var(--bg);
+  }
+  .c698daa,
+  .cc49bc5 {
+    width: 100%;
+  }
+  .ca43060,
+  .c149a6b {
+    display: none;
+  }
+  .c5a76fb {
+    padding-top: 1.5rem;
+  }
+  .c5a76fb h1 {
+    font-size: 2.6rem;
+  }
+  .c99b502,
+  .c197a61,
+  .c439494 {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+  .c99bb7e h3,
+  .ce5299b {
+    break-after: avoid;
+  }
+  .c99bb7e table {
+    display: table;
+    overflow: visible;
+  }
+}
 </style>
 </head>
 <body>
-<a class="skip-ledger" href="#zec-main">Skip to swap ZEC guide</a>
-<div class="folio">
-<header class="mast"><a class="wordmark" href="/" aria-label="Swap ZEC home"><img src="zec.png" alt="Zcash" width="31" height="31">swap ZEC</a><nav aria-label="Zcash exchange navigation"><a href="#zec-pairs">ZEC pairs</a><a href="#zec-method">How to swap</a><a href="/dashboard/" class="gold-action">Swap ZEC <span aria-hidden="true">↗</span></a></nav></header>
-<main id="zec-main">
-<section class="opening" aria-labelledby="zec-title">
-<div class="opening-copy"><div class="asset-note">Zcash / crypto exchange</div><h1 id="zec-title">Swap <span>ZEC</span></h1><p>swap ZEC to Bitcoin, Tether or Ethereum with the address, network and final receive amount checked before you send.</p><a class="gold-action" href="/dashboard/">Start your ZEC swap <span aria-hidden="true">↗</span></a><p class="small-trail">Review your quote and deposit instructions in the app.</p><div class="route-mini"><div><strong>ZEC → BTC</strong>Bitcoin</div><div><strong>ZEC → USDT</strong>Tether</div><div><strong>ZEC → ETH</strong>Ethereum</div></div></div>
-<div class="transfer-slip" id="zec-transfer" role="link" tabindex="0" aria-label="Open the dashboard to swap ZEC">
-<div class="slip-head"><strong>Zcash exchange</strong><span>ZEC → BTC</span></div><div class="slip-body"><div class="asset-box"><div class="asset-caption">You send</div><div class="asset-line"><span class="asset-symbol"><img src="zec.png" alt="" width="34" height="34">ZEC</span><span class="asset-name">Zcash</span></div></div><div class="transfer-divider" aria-hidden="true">↓</div><div class="asset-box"><div class="asset-caption">You receive</div><div class="asset-line"><span class="asset-symbol"><img src="btc.png" alt="" width="34" height="34">BTC</span><span class="asset-name">Bitcoin</span></div></div><div class="address-cue"><span>Shielded</span><span>Transparent</span><span>Unified</span></div><p class="slip-guidance">Check the accepted Zcash address format in your deposit instructions.</p><div class="slip-open">Set up your ZEC swap <span aria-hidden="true">↗</span></div></div><div class="slip-foot"><span>Amount &amp; rate set in the app</span><span>Zcash network</span></div>
+<div class="c698daa">
+  <header class="c6b0936">
+    <div class="c54522f"><span class="cd325d2" aria-hidden="true">⇄</span><span>Exchange</span></div>
+    <a class="ca43060" href="dashboard/">Open app <span aria-hidden="true">↗</span></a>
+  </header>
+  <div class="c339afa"><nav class="cb493ca" aria-label="Breadcrumb"><a href="dashboard/">Home</a> <span>/</span> <span>Swaps</span> <span>/</span> <span>Zcash Swap</span></nav></div>
+  <section class="c5a76fb" aria-labelledby="hero-title">
+    <div class="cea6b13">A direct route to your next asset</div>
+    <h1 id="hero-title">Zcash <em>Swap</em>.</h1>
+    <p class="cdd4f51">A Zcash Swap exchanges ZEC for another asset, most often BTC, without ever handing your coins to a custodian you have to trust with a login. The route you pick changes what the other side of the trade can see: a shielded ZEC balance stays private until the moment it leaves your z-addr, while a transparent balance is visible on-chain like any Bitcoin address. Whichever path you choose, you review the rate and the amount you will receive before you sign, and your keys stay in your own wallet from the first click to the last confirmation.</p>
+    <div class="c99b502" role="group" aria-labelledby="exchange-title">
+      <div class="c5ba1f2">
+        <h2 id="exchange-title">Your exchange</h2>
+        <p>One route. Every detail in view.</p>
+      </div>
+      <div class="cc5f41f">
+        <div class="cbf7558">
+          <label class="c658513" for="amount">You pay</label>
+          <input id="amount" name="amount" type="number" inputmode="decimal" min="1" max="1000000" step="any" value="1000" required aria-describedby="amount-help amount-message" aria-invalid="false">
+          <span class="ccd23ee" id="amount-help">From 1 to 1,000,000 units</span>
+        </div>
+        <div class="cc77f1b" role="group" aria-label="Exchange route">
+          <span class="c785199"><img src="assets/tokens/zec.svg" alt="Zcash" width="28" height="28"></span>
+          <span class="c7838df" role="img" aria-label="to">→</span>
+          <span class="c785199"><img src="assets/tokens/btc.svg" alt="Bitcoin" width="28" height="28"></span>
+        </div>
+        <div class="cbf7558 c26d711">
+          <label class="c658513" for="received">You receive</label>
+          <output id="received" for="amount" aria-live="polite" aria-atomic="true">—</output>
+          <span class="ccd23ee">After network fee · destination units</span>
+        </div>
+      </div>
+      <div class="c63a1b7">
+        <dl class="cdbbf18">
+          <div><dt>Rate</dt><dd><output id="rate" for="amount">—</output></dd></div>
+          <div><dt>Network fee</dt><dd><output id="network-fee" for="amount">—</output></dd></div>
+        </dl>
+        <a class="c149a6b" href="dashboard/"><span>Continue to exchange</span><span aria-hidden="true">→</span></a>
+      </div>
+      <p class="c59941d" id="amount-message" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+  <ul class="ccc7fac" aria-label="Exchange features">
+    <li>Non-custodial</li>
+    <li>On-chain</li>
+    <li>No sign-up</li>
+    <li>Transparent fees</li>
+  </ul>
+  <section class="c197a61" aria-labelledby="facts-title">
+    <h2 class="c7e25a5" id="facts-title">Key facts</h2>
+    <div class="c98fb8e" tabindex="0" role="region" aria-label="Key facts table"><table class="cbef53a"><tbody><tr><th scope="row">Asset</th><td>ZEC — Zcash, a privacy-focused layer-1</td></tr>
+<tr><th scope="row">Address types</th><td>Shielded (z-addr) and transparent (t-addr)</td></tr>
+<tr><th scope="row">Swap venues</th><td>Non-custodial exchangers and atomic swap protocols</td></tr>
+<tr><th scope="row">Counterparty asset</th><td>BTC — Bitcoin, most common pair</td></tr>
+<tr><th scope="row">Confirmation time</th><td>Minutes per chain, more for finality</td></tr>
+<tr><th scope="row">Custody</th><td>Self-custody — you hold your keys throughout</td></tr></tbody></table></div>
+  </section>
+  <main class="cc49bc5" id="content">
+    <section class="c8da3fd"><h2 class="ce5299b">What a Zcash Swap Is</h2><div class="c99bb7e"><strong>A Zcash Swap exchanges ZEC for another asset such as BTC, carried out through a non-custodial exchanger, a swap pool, or a trustless atomic swap that settles directly between the two chains.</strong> Unlike a deposit to a centralized exchange, a non-custodial route never asks you to hand over your coins before the trade completes — you sign a transaction, the counterparty's contract or script does the same, and the swap either finishes on both sides or not at all. ZEC itself is the native coin of the Zcash network, whose own project page at <a href="https://z.cash/" rel="nofollow noopener" target="_blank">z.cash</a> documents both address formats in detail. What sets a Zcash Swap apart from swapping most other assets is the address you swap from: ZEC can move from a shielded z-addr, where the amount and participants are hidden, or from a transparent t-addr, where the balance is as visible as a normal Bitcoin UTXO.<h3>Shielded vs Transparent Addresses</h3>Zcash supports two address formats on the same network. A transparent address works like a Bitcoin address: anyone can see the balance and every transaction tied to it on a public explorer. A shielded address uses zero-knowledge proofs to hide the sender, receiver and amount while still proving the transaction is valid, a design documented in detail on <a href="https://en.wikipedia.org/wiki/Zcash" rel="nofollow noopener" target="_blank">Wikipedia's Zcash entry</a>. Both address types spend the same ZEC; they just expose different information about the spend.<h3>Why the Address Type Matters for Swaps</h3>Most exchangers and swap protocols only accept ZEC from a transparent address, because the counterparty's software needs to verify the transaction's inputs and outputs the way it would for Bitcoin. If your ZEC sits in a shielded pool, you typically deshield it to a t-addr first, then run the swap from there. That extra step is the trade-off privacy-conscious users accept for liquidity and speed.</div></section>
+<section class="c8da3fd"><h2 class="ce5299b">Shielded vs Transparent: The Core Trade-off for a Swap</h2><div class="c99bb7e">The table below lays out what each address type gives up and keeps when it feeds into a swap. Neither option is wrong; they serve different goals, and plenty of users hold ZEC in both forms depending on whether a balance is meant to move soon or sit untouched. A balance that sits in cold storage for months gains little from being transparent, while a balance you plan to trade within the week gains little from staying shielded if the swap route will need it transparent anyway. Thinking of the two address types as separate accounts for separate purposes, rather than one setting you pick once, is the simplest way to use Zcash without fighting its own design.<table><thead><tr><th>Property</th><th>Shielded (z-addr)</th><th>Transparent (t-addr)</th></tr></thead><tbody><tr><td>Visibility on-chain</td><td>Sender, receiver and amount hidden</td><td>Fully visible, like a Bitcoin UTXO</td></tr><tr><td>Swap compatibility</td><td>Usually requires deshielding first</td><td>Accepted directly by most exchangers</td></tr><tr><td>Typical use</td><td>Long-term holding, private transfers</td><td>Active trading and swaps</td></tr></tbody></table></div></section>
+<section class="c8da3fd"><h2 class="ce5299b">Non-Custodial Exchangers for a Zcash Swap</h2><div class="c99bb7e">A non-custodial exchanger quotes a rate, gives you a deposit address, and sends the other asset the moment your ZEC confirms — at no point does it hold a balance tied to your identity the way a centralized account would. This is the most common way people run a Zcash Swap into BTC today, because it needs no sign-up and no KYC form for most amounts, and the whole exchange reads as two independent on-chain transactions rather than a ledger entry on someone else's server.<h3>How a Non-Custodial ZEC Swap Works</h3>You enter the amount of ZEC you want to send and the BTC address that should receive the output. The exchanger locks in a rate for a short window, shows you a deposit address, and starts watching the chain. Once your ZEC transaction reaches the required confirmations, it broadcasts the BTC payout automatically — you never create an account and the exchanger never custodies funds beyond the seconds it takes to route the trade.<h3>Choosing an Exchanger</h3>Favor an exchanger with a transparent fee shown before you commit, a rate that updates live rather than one locked far in advance, and a track record you can check against independent volume data such as the swap and bridge rankings on <a href="https://defillama.com/" rel="nofollow noopener" target="_blank">DefiLlama</a>. Avoid any service that asks for a shielded-only deposit with no way to confirm it, or that asks you to pre-pay a fee before showing the output address.</div></section>
+<section class="c8da3fd"><h2 class="ce5299b">Atomic Swaps: A Trustless Zcash Swap Route</h2><div class="c99bb7e">An atomic swap trades ZEC for BTC directly between two chains using a cryptographic script, usually a hash time-locked contract, so that either both sides of the trade complete or both sides refund — there is no step where one party could walk away with both assets. This removes the exchanger entirely: your counterparty is another trader, matched through a swap protocol, not a service holding a float of coins.<h3>How Atomic Swaps Work</h3>Each side locks their asset in a script tied to the same secret. Claiming the ZEC reveals the secret needed to claim the BTC, and vice versa, within a fixed time window. If either party fails to complete their half before the window closes, the locked funds return to their original owner automatically, so no trust in the counterparty is required beyond running the protocol correctly.<h3>Limitations of Atomic Swaps with Shielded ZEC</h3>Hash time-locked scripts need a transparent, verifiable transaction structure, which shielded Zcash transactions intentionally obscure. In practice this means atomic swaps run from a t-addr, with the same deshielding step a non-custodial exchanger would require. You can confirm a completed swap's ZEC leg on a public block explorer such as <a href="https://www.blockchair.com/zcash" rel="nofollow noopener" target="_blank">Blockchair's Zcash explorer</a> once it clears, which only applies to the transparent side of the trade.</div></section>
+<section class="c8da3fd"><h2 class="ce5299b">Confirmations and Timing for a Zcash Swap</h2><div class="c99bb7e">A Zcash Swap only finishes once both legs have enough confirmations to be considered final, and ZEC and BTC confirm on different schedules. Zcash blocks land roughly every 75 seconds; Bitcoin blocks land roughly every ten minutes, so the BTC leg of most swaps is the slower half of the trade. The steps below describe the typical path from quote to settled swap.<ul><li>Get a quote and lock in the rate, the output address, and the amount you expect to receive.</li><li>Send your ZEC from a transparent address to the deposit address shown by the exchanger or swap script.</li><li>Wait for the ZEC transaction to reach the confirmations the route requires, usually just a few blocks.</li><li>The counterparty broadcasts the BTC payout, which you can track on a public explorer while it confirms.</li><li>Treat the swap as final once the BTC transaction has enough confirmations to resist a chain reorganization.</li></ul><h3>Checking the Output on a Bitcoin Explorer</h3>Once the BTC leg broadcasts, paste the transaction ID or receiving address into any <a href="https://www.blockchair.com/bitcoin" rel="nofollow noopener" target="_blank">BTC block explorer</a> to watch confirmations accumulate in real time. Six confirmations is the usual threshold traders treat as settled, though smaller amounts are often spendable sooner.</div></section>
+<section class="c8da3fd"><h2 class="ce5299b">Privacy Trade-offs in a Zcash Swap</h2><div class="c99bb7e">Swapping from a shielded address protects your activity right up until the deshielding transaction, which is the moment your balance and the fact that you are about to swap become visible on-chain. Swapping from a transparent address skips that reveal but means the balance was never hidden to begin with. Neither path lets you send directly from a shielded pool into a swap script today, because the scripts and exchangers that settle the trade need a transparent, auditable transaction to work from.<h3>Minimizing What a Swap Reveals</h3>Deshield only the amount you intend to swap rather than your whole balance, use a fresh transparent address for each swap instead of reusing one, and avoid linking the output BTC address to other activity you want kept separate. These habits limit what a Zcash Swap exposes without changing how the trade itself executes.</div></section>
+<section class="c8da3fd"><h2 class="ce5299b">Self-Custody Before and After a Zcash Swap</h2><div class="c99bb7e">A Zcash Swap should never require you to deposit funds into an account you log into with a password. Before the swap, your ZEC sits in a wallet you control, shielded or transparent as you choose; after the swap, your BTC lands in a wallet address you specified, also fully under your own keys. The exchanger or swap script only ever touches the funds for the seconds it takes to complete the trade, and nothing about a non-custodial swap ever asks for your seed phrase or private key — if anything claiming to run a Zcash Swap asks for either, treat it as fraud and stop. Keep the receiving BTC address in a wallet you control before the swap even starts, so there is no moment after settlement where you need to move funds again to reach proper self-custody. The same rule applies in reverse for a BTC to ZEC trade: generate your Zcash address first, shielded or transparent, and only then begin the swap.</div></section>
+    <details class="c439494"><summary class="ce6b027">Can I run a Zcash Swap directly from a shielded address?</summary><div class="c32c299">Not directly. Most non-custodial exchangers and atomic swap scripts need a transparent, verifiable transaction, so ZEC held in a shielded pool is usually deshielded to a t-addr first, then swapped from there.</div></details>
+<details class="c439494"><summary class="ce6b027">Is a Zcash Swap custodial?</summary><div class="c32c299">A non-custodial exchanger or an atomic swap never takes ongoing custody of your funds. You send ZEC to a deposit address or lock script and receive BTC in return, with your keys controlling both balances the entire time.</div></details>
+<details class="c439494"><summary class="ce6b027">How long does a ZEC to BTC swap take?</summary><div class="c32c299">The ZEC leg confirms in minutes given Zcash's roughly 75-second block time. The BTC leg is usually the slower half, since Bitcoin blocks land roughly every ten minutes and most traders wait for several confirmations before treating the swap as final.</div></details>
+<details class="c439494"><summary class="ce6b027">What is an atomic swap and why use one for ZEC?</summary><div class="c32c299">An atomic swap uses a time-locked script so either both sides of a ZEC-for-BTC trade complete or both refund automatically. It removes the exchanger as a counterparty, trading directly against another trader's locked funds instead.</div></details>
+<details class="c439494"><summary class="ce6b027">Why does a shielded balance need to be deshielded before swapping?</summary><div class="c32c299">Swap scripts and exchanger software verify a transaction's visible inputs and outputs the same way they would for Bitcoin. A shielded transaction hides exactly that information by design, so it cannot be checked by a script that needs to see it.</div></details>
+<details class="c439494"><summary class="ce6b027">Does swapping ZEC for BTC require an account?</summary><div class="c32c299">No. A non-custodial exchanger needs only a deposit address and a payout address, and an atomic swap needs only your wallet and the swap script. Neither requires sign-up or identity verification for typical amounts.</div></details>
+<details class="c439494"><summary class="ce6b027">How do I confirm a Zcash Swap actually settled?</summary><div class="c32c299">Check the ZEC transaction on a Zcash block explorer and the BTC payout on a Bitcoin block explorer using the transaction IDs the exchanger or swap script provides. Once both show the required confirmations, the swap is settled.</div></details>
+  </main>
+  <section class="c467633 cc49bc5" aria-labelledby="sources-title">
+    <h2 class="c7e25a5" id="sources-title">Sources</h2>
+    <ul class="c01f392"><li><a class="c74ddab" href="https://z.cash/" rel="nofollow noopener" target="_blank">Zcash — official site</a></li>
+<li><a class="c74ddab" href="https://en.wikipedia.org/wiki/Zcash" rel="nofollow noopener" target="_blank">Zcash — Wikipedia</a></li>
+<li><a class="c74ddab" href="https://www.blockchair.com/zcash" rel="nofollow noopener" target="_blank">Blockchair Zcash explorer</a></li>
+<li><a class="c74ddab" href="https://defillama.com/" rel="nofollow noopener" target="_blank">DefiLlama</a></li></ul>
+  </section>
+  <footer class="c0890b2">
+    <span class="c1332b7">Exchange</span>
+    <p class="c278088">Updated <span>Updated Oct 10, 2026</span></p>
+  </footer>
 </div>
-</section>
-<section class="chapter" id="zec-pairs"><div class="chapter-head"><h2>Swap ZEC to BTC, USDT or ETH — see how much you get</h2><span>Choose your receiving asset</span></div><div class="pair-shelf">
-<a class="pair-ticket" href="/dashboard/"><div class="pair-images"><img src="zec.png" alt="Zcash" width="29" height="29"><span aria-hidden="true">→</span><img src="btc.png" alt="Bitcoin" width="29" height="29"></div><h3>Swap ZEC to BTC</h3><p>Swap Zcash to Bitcoin. Use a receiving address on the Bitcoin network.</p><span class="pair-go">Start a ZEC to BTC swap ↗</span></a>
-<a class="pair-ticket" href="/dashboard/"><div class="pair-images"><img src="zec.png" alt="Zcash" width="29" height="29"><span aria-hidden="true">→</span><img src="usdt.png" alt="Tether" width="29" height="29"></div><h3>Swap ZEC to USDT</h3><p>Swap Zcash to Tether. Match the USDT payout network to your wallet’s deposit network.</p><span class="pair-go">Start a ZEC to USDT swap ↗</span></a>
-<a class="pair-ticket" href="/dashboard/"><div class="pair-images"><img src="zec.png" alt="Zcash" width="29" height="29"><span aria-hidden="true">→</span><img src="eth.png" alt="Ethereum" width="29" height="29"></div><h3>Swap ZEC to ETH</h3><p>Swap Zcash to Ether. Verify the receiving network, even when the address looks familiar.</p><span class="pair-go">Start a ZEC to ETH swap ↗</span></a>
-</div></section>
-<section class="chapter" id="zec-method"><h2>Your first ZEC swap: every step explained</h2><ol class="instruction-rail"><li><h3>Choose a pair and amount</h3><p>Open the app, select ZEC as the sending coin and review the receive amount, fees and quote expiry.</p></li><li><h3>Check both ends</h3><p>Enter your destination wallet address. Match its network and check which Zcash address formats the deposit supports.</p></li><li><h3>Send ZEC and track delivery</h3><p>Send the requested amount to the order’s deposit address. The service releases the asset after your Zcash transaction confirms and the order’s checks complete.</p></li></ol></section>
-<section class="chapter address-fees" aria-label="Zcash address compatibility and exchange costs"><div><h2>How to swap ZEC from a shielded wallet</h2><div class="address-sheet"><h3>Match the deposit’s address format</h3><p>Zcash has transparent t-addresses and shielded z-addresses. Unified addresses can combine receiver types. Follow the order’s accepted formats; shielded wallet support alone does not establish deposit compatibility.</p><h3>Know what remains public</h3><p>Zcash uses zk-SNARKs to verify shielded transactions without exposing their private details. Transparent addresses reveal activity publicly. Swapping into BTC, USDT or ETH does not carry Zcash’s shielded privacy onto the receiving network.</p><a class="fact-link" href="https://z.cash/learn/what-are-zk-snarks/">Read Zcash’s explanation of zk-SNARK privacy ↗</a><br><a class="fact-link" href="https://z.cash/learn/what-are-zcash-unified-addresses/">Understand Zcash unified addresses ↗</a></div></div><aside class="fee-note"><h2>ZEC swap costs: sending ZEC and receiving your coin</h2><p>Compare the final amount delivered to your wallet, alongside these cost layers.</p><dl><dt>Zcash network fee</dt><dd>Your sending wallet pays the network to process the ZEC transaction.</dd><dt>Exchange fee and spread</dt><dd>The service’s charge and exchange-rate spread affect the quoted receive amount.</dd><dt>Receiving network fee</dt><dd>A payout fee can be deducted or included in the quote. Check the order’s breakdown.</dd><dt>Quote timing</dt><dd>A floating rate moves with the market. A fixed quote applies only within its stated conditions and deadline.</dd></dl></aside></section>
-<section class="chapter"><h2>ZEC swap taking too long? How to track it</h2><div class="repair-grid"><div><h3>Address rejected</h3><p>Check the full address and accepted Zcash format. For USDT or ETH payouts, verify the destination network before creating the order again.</p></div><div><h3>ZEC swap still pending</h3><p>Find your transaction ID in the sending wallet and check its confirmations. If the deposit is confirmed but the order has stalled, contact the service with the order ID and transaction ID.</p></div><div><h3>Quote expired or deposit too small</h3><p>Refresh the quote before sending. Check the minimum after any wallet withdrawal fee. If you already sent, use the existing order’s support route before sending more.</p></div></div><p class="check-chain">Check your transaction: <a href="https://blockchair.com/zcash">track Zcash confirmations on Blockchair ↗</a>. Shielded transaction details remain private.</p></section>
-<section class="chapter" aria-labelledby="zec-video-title"><div class="film-row"><div class="film-stage" id="zec-film"><button type="button" id="zec-play" aria-label="Play ZecHub’s shielded ZEC swap tutorial"><img src="https://i.ytimg.com/vi/uS9ZDgEFCAs/hqdefault.jpg" alt="ZecHub tutorial: swap shielded ZEC using Zashi and Solflare" width="480" height="360" loading="lazy" decoding="async"></button></div><div class="film-copy"><div class="asset-note">Zcash wallet tutorial</div><h2>How to swap ZEC: watch the wallet flow</h2><p>Watch ZecHub’s walkthrough of swapping shielded ZEC to SOL using Zashi and Solflare. Follow the wallet workflow, from choosing the receiving asset to completing the transfer.</p><p class="film-credit">ZecHub · Published 15 November 2025</p></div></div><div class="community-plaque"><div><h3>Zcash community discussions</h3><p>Explore wallet compatibility, shielded transactions and Zcash updates.</p></div><a href="https://www.reddit.com/r/zec/">Read Zcash wallet and transaction discussions on r/zec ↗</a></div></section>
-<section class="chapter questions" id="zec-faq"><div><h2>Before you swap ZEC: amounts, wallets and networks</h2><a class="fact-link" href="/dashboard/">Open the app to swap ZEC ↗</a></div><div>
-<details><summary>Where can I swap ZEC to BTC, USDT or ETH?</summary><p>Open the swap dashboard, choose ZEC and select your receiving asset. Check the available pair, payout network, minimum amount and final quote before sending.</p></details>
-<details><summary>Can I swap ZEC from a shielded address?</summary><p>Check the service’s deposit instructions for shielded sender and address-format support. Use a compatible Zcash wallet and the exact deposit address assigned to your order.</p></details>
-<details><summary>How long does it take to swap ZEC?</summary><p>The total time includes Zcash deposit confirmations, order processing and confirmation on the receiving network. Use your order status and transaction IDs to track each stage.</p></details>
-<details><summary>How do I get the best swap ZEC rate?</summary><p>Compare the final receive amount for the same ZEC amount and destination network. Include the exchange fee, spread and payout fee, then check the quote’s expiry and rate conditions.</p></details>
-<details><summary>Why is my swap ZEC deposit not showing?</summary><p>Check that the wallet broadcast the transaction, then verify the deposit address, amount and confirmations. If it is confirmed but missing from the order, contact the service with your order ID and transaction ID.</p></details>
-</div></section>
-</main><footer class="closing-line"><span>Zcash exchange · BTC / USDT / ETH</span><a href="/dashboard/">Swap ZEC in the dashboard ↗</a></footer>
-</div>
-<script type="application/ld+json" id="zec-schema">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://insert_url/#webpage","url":"https://insert_url/","name":"swap ZEC — Exchange Zcash to BTC, USDT or ETH","inLanguage":"en","mentions":{"@type":"WebPage","@id":"https://www.reddit.com/r/zec/","url":"https://www.reddit.com/r/zec/","name":"Zcash community discussions on r/zec"},"video":{"@id":"https://insert_url/#video"}},{"@type":"VideoObject","@id":"https://insert_url/#video","name":"How to swap Shielded ZEC for SOL using Zashi and Solflare","description":"ZecHub demonstrates how to swap shielded Zcash for Solana using Zashi and Solflare.","thumbnailUrl":"https://i.ytimg.com/vi/uS9ZDgEFCAs/hqdefault.jpg","uploadDate":"2025-11-15","duration":"PT3M23S","embedUrl":"https://www.youtube-nocookie.com/embed/uS9ZDgEFCAs","publisher":{"@type":"Organization","name":"ZecHub"}},{"@type":"FAQPage","@id":"https://insert_url/#faq","mainEntity":[{"@type":"Question","name":"Where can I swap ZEC to BTC, USDT or ETH?","acceptedAnswer":{"@type":"Answer","text":"Open the swap dashboard, choose ZEC and select your receiving asset. Check the available pair, payout network, minimum amount and final quote before sending."}},{"@type":"Question","name":"Can I swap ZEC from a shielded address?","acceptedAnswer":{"@type":"Answer","text":"Check the service’s deposit instructions for shielded sender and address-format support. Use a compatible Zcash wallet and the exact deposit address assigned to your order."}},{"@type":"Question","name":"How long does it take to swap ZEC?","acceptedAnswer":{"@type":"Answer","text":"The total time includes Zcash deposit confirmations, order processing and confirmation on the receiving network. Use your order status and transaction IDs to track each stage."}},{"@type":"Question","name":"How do I get the best swap ZEC rate?","acceptedAnswer":{"@type":"Answer","text":"Compare the final receive amount for the same ZEC amount and destination network. Include the exchange fee, spread and payout fee, then check the quote’s expiry and rate conditions."}},{"@type":"Question","name":"Why is my swap ZEC deposit not showing?","acceptedAnswer":{"@type":"Answer","text":"Check that the wallet broadcast the transaction, then verify the deposit address, amount and confirmations. If it is confirmed but missing from the order, contact the service with your order ID and transaction ID."}}]}]}</script>
 <script>
-const zecTransfer=document.getElementById('zec-transfer');
-zecTransfer.addEventListener('click',()=>window.location.assign('/dashboard/'));
-zecTransfer.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();window.location.assign('/dashboard/');}});
-document.getElementById('zec-play').addEventListener('click',()=>{const player=document.createElement('iframe');player.src='https://www.youtube-nocookie.com/embed/uS9ZDgEFCAs?autoplay=1';player.title='How to swap Shielded ZEC for SOL using Zashi and Solflare — ZecHub';player.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';player.allowFullscreen=true;player.referrerPolicy='strict-origin-when-cross-origin';document.getElementById('zec-film').replaceChildren(player);player.focus();},{once:true});
+(() => {
+  'use strict';
+  const amount = document.getElementById('amount');
+  const received = document.getElementById('received');
+  const rateOutput = document.getElementById('rate');
+  const feeOutput = document.getElementById('network-fee');
+  const message = document.getElementById('amount-message');
+  const exchangeRate = 0.985;
+  const baseFee = 0.25;
+  const networkFactor = 0.001;
+  const formatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 6 });
+  let timer;
+
+  function clearQuote() {
+    received.value = '—';
+    rateOutput.value = '—';
+    feeOutput.value = '—';
+  }
+
+  function updateQuote() {
+    clearTimeout(timer);
+    const raw = amount.value.trim();
+    const value = amount.valueAsNumber;
+    const valid = raw !== '' && Number.isFinite(value) && value >= 1 && value <= 1000000 && !amount.validity.badInput;
+    amount.setAttribute('aria-invalid', String(!valid));
+    message.dataset.invalid = String(!valid);
+    if (!valid) {
+      clearQuote();
+      const error = 'Enter an amount from 1 to 1,000,000.';
+      amount.setCustomValidity(error);
+      message.textContent = error;
+      return;
+    }
+    amount.setCustomValidity('');
+    const networkFee = baseFee + value * networkFactor;
+    const netAmount = Math.max(0, value * exchangeRate - networkFee);
+    received.value = formatter.format(netAmount);
+    rateOutput.value = '1 → ' + formatter.format(exchangeRate);
+    feeOutput.value = formatter.format(networkFee) + ' destination units';
+    message.textContent = '';
+  }
+
+  amount.addEventListener('input', () => {
+    clearTimeout(timer);
+    amount.setCustomValidity('');
+    clearQuote();
+    timer = setTimeout(updateQuote, 200);
+  });
+  amount.addEventListener('change', updateQuote);
+  amount.addEventListener('blur', updateQuote);
+  updateQuote();
+})();
 </script>
 </body>
 </html>

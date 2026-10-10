@@ -1,0 +1,3 @@
+# Zcash Swap
+
+Run a Zcash Swap from a shielded or transparent address to BTC. Compare non-custodial exchangers and atomic swaps, check confirmation times, and keep self-custody of your ZEC the whole way.
