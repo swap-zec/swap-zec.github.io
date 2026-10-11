@@ -1,1107 +1,231 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Zcash Swap — Exchange ZEC for BTC, Shielded or Transparent</title>
-<meta name="description" content="Run a Zcash Swap from a shielded or transparent address to BTC. Compare non-custodial exchangers and atomic swaps, check confirmation times, and keep self-custody of your ZEC the whole way.">
-<link rel="canonical" href="https://swap-zec.github.io/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zcash Swap">
-<meta property="og:description" content="Run a Zcash Swap from a shielded or transparent address to BTC. Compare non-custodial exchangers and atomic swaps, check confirmation times, and keep self-custody of your ZEC the whole way.">
-<meta property="og:url" content="https://swap-zec.github.io/">
-<meta property="og:image" content="https://swap-zec.github.io/og.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Zcash Swap">
-<meta name="twitter:description" content="Run a Zcash Swap from a shielded or transparent address to BTC. Compare non-custodial exchangers and atomic swaps, check confirmation times, and keep self-custody of your ZEC the whole way.">
-<meta name="twitter:image" content="https://swap-zec.github.io/og.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zcash Swap — Exchange ZEC for BTC, Shielded or Transparent</title>
+  <meta name="description" content="Run a Zcash Swap from a shielded or transparent address to BTC. Compare non-custodial exchangers and atomic swaps, check confirmation times, and keep self-custody of your ZEC the whole way.">
+  <link rel="canonical" href="https://swap-zec.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Zcash Swap">
+  <meta property="og:description" content="Run a Zcash Swap from a shielded or transparent address to BTC. Compare non-custodial exchangers and atomic swaps, check confirmation times, and keep self-custody of your ZEC the whole way.">
+  <meta property="og:url" content="https://swap-zec.github.io/">
+  <meta property="og:image" content="https://swap-zec.github.io/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Zcash Swap">
+  <meta name="twitter:description" content="Run a Zcash Swap from a shielded or transparent address to BTC. Compare non-custodial exchangers and atomic swaps, check confirmation times, and keep self-custody of your ZEC the whole way.">
+  <meta name="twitter:image" content="https://swap-zec.github.io/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://swap-zec.github.io/#website", "url": "https://swap-zec.github.io/", "name": "Zcash Swap — Exchange ZEC for BTC, Shielded or Transparent"}, {"@type": "WebPage", "@id": "https://swap-zec.github.io/#webpage", "url": "https://swap-zec.github.io/", "name": "Zcash Swap — Exchange ZEC for BTC, Shielded or Transparent", "isPartOf": {"@id": "https://swap-zec.github.io/#website"}, "description": "Run a Zcash Swap from a shielded or transparent address to BTC. Compare non-custodial exchangers and atomic swaps, check confirmation times, and keep self-custody of your ZEC the whole way.", "datePublished": "2026-10-10", "dateModified": "2026-10-10"}, {"@type": "SoftwareApplication", "name": "Zcash Swap", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://swap-zec.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Swaps"}, {"@type": "ListItem", "position": 3, "name": "Zcash Swap"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can I run a Zcash Swap directly from a shielded address?", "acceptedAnswer": {"@type": "Answer", "text": "Not directly. Most non-custodial exchangers and atomic swap scripts need a transparent, verifiable transaction, so ZEC held in a shielded pool is usually deshielded to a t-addr first, then swapped from there."}}, {"@type": "Question", "name": "Is a Zcash Swap custodial?", "acceptedAnswer": {"@type": "Answer", "text": "A non-custodial exchanger or an atomic swap never takes ongoing custody of your funds. You send ZEC to a deposit address or lock script and receive BTC in return, with your keys controlling both balances the entire time."}}, {"@type": "Question", "name": "How long does a ZEC to BTC swap take?", "acceptedAnswer": {"@type": "Answer", "text": "The ZEC leg confirms in minutes given Zcash's roughly 75-second block time. The BTC leg is usually the slower half, since Bitcoin blocks land roughly every ten minutes and most traders wait for several confirmations before treating the swap as final."}}, {"@type": "Question", "name": "What is an atomic swap and why use one for ZEC?", "acceptedAnswer": {"@type": "Answer", "text": "An atomic swap uses a time-locked script so either both sides of a ZEC-for-BTC trade complete or both refund automatically. It removes the exchanger as a counterparty, trading directly against another trader's locked funds instead."}}, {"@type": "Question", "name": "Why does a shielded balance need to be deshielded before swapping?", "acceptedAnswer": {"@type": "Answer", "text": "Swap scripts and exchanger software verify a transaction's visible inputs and outputs the same way they would for Bitcoin. A shielded transaction hides exactly that information by design, so it cannot be checked by a script that needs to see it."}}, {"@type": "Question", "name": "Does swapping ZEC for BTC require an account?", "acceptedAnswer": {"@type": "Answer", "text": "No. A non-custodial exchanger needs only a deposit address and a payout address, and an atomic swap needs only your wallet and the swap script. Neither requires sign-up or identity verification for typical amounts."}}, {"@type": "Question", "name": "How do I confirm a Zcash Swap actually settled?", "acceptedAnswer": {"@type": "Answer", "text": "Check the ZEC transaction on a Zcash block explorer and the BTC payout on a Bitcoin block explorer using the transaction IDs the exchanger or swap script provides. Once both show the required confirmations, the swap is settled."}}]}]}</script>
-<style>
-:root{--bg:#F7FAFC;--surface:#FFFFFF;--text:#0C1620;--muted:#52606F;--accent:#0369A1;--accent-ink:#FFFFFF;--radius:13px;--display:"Plus Jakarta Sans";--body:"Inter"}
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-html {
-  min-width: 280px;
-  scroll-behavior: smooth;
-  scroll-padding-top: 2rem;
-  background: var(--bg);
-  -webkit-text-size-adjust: 100%;
-}
-body {
-  margin: 0;
-  color: var(--text);
-  background: radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 42rem), var(--bg);
-  font-family: var(--body);
-  font-size: 1rem;
-  line-height: 1.65;
-  overflow-wrap: anywhere;
-  -webkit-font-smoothing: antialiased;
-}
-::selection {
-  color: var(--accent-ink);
-  background: var(--accent);
-}
-a {
-  color: var(--accent);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.22em;
-  transition: color 160ms ease, background 160ms ease, box-shadow 160ms ease;
-}
-a:hover {
-  color: color-mix(in srgb, var(--accent) 76%, var(--text));
-}
-a:focus-visible,
-input:focus-visible,
-summary:focus-visible,
-[tabindex]:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 5px;
-}
-img,
-svg {
-  max-width: 100%;
-  vertical-align: middle;
-}
-img {
-  height: auto;
-}
-input,
-output {
-  font-family: var(--body);
-}
-h1,
-h2,
-h3,
-h4 {
-  color: var(--text);
-  font-family: var(--display);
-  text-wrap: balance;
-}
-p,
-ul,
-ol,
-blockquote,
-figure {
-  margin: 0;
-}
-.c698daa {
-  width: min(100% - 4rem, 1120px);
-  margin-inline: auto;
-}
-.c6b0936 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  min-height: 92px;
-  border-bottom: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
-}
-.c54522f {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  color: var(--text);
-  font-family: var(--display);
-  font-size: 1.2rem;
-  font-weight: 750;
-  letter-spacing: -0.045em;
-}
-.cd325d2 {
-  display: grid;
-  width: 36px;
-  height: 36px;
-  place-items: center;
-  border: 1px solid color-mix(in srgb, var(--accent) 23%, transparent);
-  border-radius: calc(var(--radius) * 0.55);
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
-  font-size: 1.4rem;
-  line-height: 1;
-}
-.ca43060 {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.7rem;
-  min-height: 42px;
-  padding: 0.55rem 1.1rem;
-  border: 1px solid color-mix(in srgb, var(--text) 14%, transparent);
-  border-radius: calc(var(--radius) * 0.65);
-  color: var(--text);
-  background: color-mix(in srgb, var(--surface) 80%, transparent);
-  font-size: 0.85rem;
-  font-weight: 650;
-  text-decoration: none;
-}
-.ca43060:hover {
-  color: var(--accent);
-  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
-  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
-}
-.c339afa {
-  padding-block: 1.4rem 0.5rem;
-  color: var(--muted);
-  font-size: 0.78rem;
-}
-.cb493ca {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.45rem 0.7rem;
-  margin: 0;
-  padding: 0;
-  color: var(--muted);
-  list-style: none;
-}
-.cb493ca ol,
-.cb493ca ul {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.45rem 0.7rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.cb493ca li {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-}
-.cb493ca li + li::before {
-  content: "/";
-  color: color-mix(in srgb, var(--muted) 60%, transparent);
-}
-.cb493ca a {
-  color: var(--muted);
-  text-decoration: none;
-}
-.cb493ca a:hover {
-  color: var(--accent);
-  text-decoration: underline;
-}
-.cb493ca [aria-current="page"] {
-  color: var(--text);
-}
-.c5a76fb {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: clamp(1.5rem, 3.5vw, 2.75rem);
-  text-align: center;
-}
-.cea6b13 {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  margin-bottom: 1.25rem;
-  padding: 0.35rem 0.8rem;
-  border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
-  border-radius: calc(var(--radius) * 2);
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-.cea6b13::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 10%, transparent);
-}
-.c5a76fb h1 {
-  max-width: 960px;
-  margin: 0;
-  font-size: clamp(2.3rem, 5vw, 4.2rem);
-  font-weight: 650;
-  line-height: 1.06;
-  letter-spacing: -0.06em;
-}
-.c5a76fb h1 em,
-.c5a76fb h1 strong,
-.c5a76fb h1 span {
-  color: var(--accent);
-}
-.c5a76fb h1 em {
-  font-style: normal;
-}
-.cdd4f51 {
-  max-width: 720px;
-  margin: 1.1rem auto 0;
-  color: var(--muted);
-  font-size: clamp(1rem, 1.65vw, 1.15rem);
-  line-height: 1.85;
-  text-wrap: pretty;
-}
-.c99b502 {
-  position: relative;
-  isolation: isolate;
-  width: 100%;
-  margin-top: clamp(1.25rem, 2.5vw, 2rem);
-  padding: clamp(1.2rem, 3.5vw, 2.6rem);
-  border: 1px solid color-mix(in srgb, var(--accent) 19%, var(--surface));
-  border-radius: var(--radius);
-  background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 5%, var(--surface)), var(--surface) 48%);
-  box-shadow: 0 24px 65px -24px color-mix(in srgb, var(--text) 21%, transparent), 0 4px 14px -7px color-mix(in srgb, var(--accent) 16%, transparent);
-  text-align: left;
-}
-.c99b502::before {
-  position: absolute;
-  inset: -1px 12% auto;
-  height: 2px;
-  content: "";
-  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 0%, transparent), color-mix(in srgb, var(--accent) 65%, transparent), color-mix(in srgb, var(--accent) 0%, transparent));
-}
-.c5ba1f2 {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.6rem 1rem;
-  margin-bottom: 1rem;
-}
-.c5ba1f2 h2 {
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 650;
-  letter-spacing: -0.035em;
-}
-.c5ba1f2 p {
-  color: var(--muted);
-  font-size: 0.78rem;
-}
-.cc5f41f {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: stretch;
-  gap: 1rem;
-}
-.cbf7558 {
-  min-width: 0;
-  padding: 1.4rem 1.5rem 1.1rem;
-  border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
-  border-radius: calc(var(--radius) * 0.7);
-  background: color-mix(in srgb, var(--bg) 65%, var(--surface));
-  transition: border-color 160ms ease, box-shadow 160ms ease;
-}
-.cbf7558:focus-within {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 9%, transparent);
-}
-.c26d711 {
-  border-color: color-mix(in srgb, var(--accent) 18%, transparent);
-  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 8%, var(--surface)), color-mix(in srgb, var(--accent) 3%, var(--surface)));
-}
-.c658513 {
-  display: block;
-  margin-bottom: 0.65rem;
-  color: var(--muted);
-  font-size: 0.82rem;
-  font-weight: 550;
-}
-#amount {
-  display: block;
-  width: 100%;
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  color: var(--text);
-  background: color-mix(in srgb, var(--surface) 0%, transparent);
-  font-family: var(--body);
-  font-size: clamp(1.7rem, 3vw, 2.65rem);
-  font-weight: 550;
-  font-variant-numeric: tabular-nums;
-  line-height: 1.3;
-  letter-spacing: -0.045em;
-  appearance: textfield;
-  -moz-appearance: textfield;
-}
-#amount::-webkit-inner-spin-button,
-#amount::-webkit-outer-spin-button {
-  margin: 0;
-  -webkit-appearance: none;
-}
-#amount::placeholder {
-  color: var(--muted);
-  opacity: 0.65;
-}
-#amount:focus-visible {
-  outline-offset: 3px;
-  outline-width: 2px;
-}
-#amount[aria-invalid="true"] {
-  text-decoration: underline wavy;
-  text-decoration-color: var(--accent);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
-}
-#received {
-  display: block;
-  min-height: 1.3em;
-  color: var(--text);
-  font-size: clamp(1.7rem, 3vw, 2.65rem);
-  font-weight: 550;
-  font-variant-numeric: tabular-nums;
-  line-height: 1.3;
-  letter-spacing: -0.045em;
-  overflow-wrap: anywhere;
-}
-.ccd23ee {
-  display: block;
-  margin-top: 0.6rem;
-  color: var(--muted);
-  font-size: 0.73rem;
-  line-height: 1.5;
-}
-.cc77f1b {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding-inline: 0.15rem;
-}
-.c785199 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  width: 48px;
-  min-height: 48px;
-  padding: 0.4rem;
-  border: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
-  border-radius: calc(var(--radius) * 0.55);
-  background: var(--surface);
-  box-shadow: 0 4px 10px color-mix(in srgb, var(--text) 4%, transparent);
-  font-size: 0.65rem;
-  line-height: 1.2;
-  text-align: center;
-}
-.c785199 img,
-.c785199 svg {
-  display: block;
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-}
-.c7838df {
-  color: var(--accent);
-  font-size: 1.3rem;
-}
-.c63a1b7 {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.55fr);
-  align-items: center;
-  gap: 1.5rem 2.5rem;
-  margin-top: 1.4rem;
-}
-.cdbbf18 {
-  display: grid;
-  gap: 0.45rem;
-  margin: 0;
-  font-size: 0.8rem;
-}
-.cdbbf18 > div {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-}
-.cdbbf18 dt {
-  color: var(--muted);
-}
-.cdbbf18 dd {
-  margin: 0;
-  color: var(--text);
-  font-weight: 550;
-  font-variant-numeric: tabular-nums;
-  text-align: right;
-}
-.c149a6b {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  min-height: 56px;
-  padding: 0.9rem 1.3rem;
-  border: 1px solid color-mix(in srgb, var(--accent) 85%, var(--text));
-  border-radius: calc(var(--radius) * 0.65);
-  color: var(--accent-ink);
-  background: linear-gradient(120deg, var(--accent), color-mix(in srgb, var(--accent) 85%, var(--text)));
-  box-shadow: 0 8px 22px -8px color-mix(in srgb, var(--accent) 45%, transparent);
-  font-size: 0.9rem;
-  font-weight: 650;
-  text-decoration: none;
-  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
-}
-.c149a6b:hover {
-  transform: translateY(-2px);
-  color: var(--accent-ink);
-  background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 94%, var(--text)), color-mix(in srgb, var(--accent) 78%, var(--text)));
-  box-shadow: 0 12px 28px -9px color-mix(in srgb, var(--accent) 50%, transparent);
-}
-.c149a6b:active {
-  transform: translateY(0);
-}
-.c149a6b span:last-child {
-  font-size: 1.3rem;
-  line-height: 1;
-}
-.c59941d {
-  min-height: 1.5em;
-  margin-top: 0.8rem;
-  color: var(--muted);
-  font-size: 0.75rem;
-}
-.c59941d[data-invalid="true"] {
-  color: var(--text);
-  font-weight: 600;
-}
-.ccc7fac {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1px;
-  margin-block: 1.6rem 4.5rem;
-  padding: 1rem 0;
-  border-block: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
-  list-style: none;
-}
-.ccc7fac li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  padding: 0.6rem 0.75rem;
-  color: var(--muted);
-  font-size: 0.8rem;
-  text-align: center;
-}
-.ccc7fac li + li {
-  border-left: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
-}
-.ccc7fac li::before {
-  content: "✓";
-  color: var(--accent);
-  font-size: 0.85rem;
-  font-weight: 650;
-}
-.c197a61 {
-  margin-bottom: 4rem;
-  padding: clamp(1.25rem, 3.5vw, 2.75rem);
-  border: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
-  border-radius: var(--radius);
-  background: var(--surface);
-  box-shadow: 0 12px 35px -22px color-mix(in srgb, var(--text) 18%, transparent);
-}
-.c7e25a5 {
-  margin: 0 0 1.6rem;
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.045em;
-}
-.c98fb8e {
-  overflow-x: auto;
-  overscroll-behavior-inline: contain;
-}
-.cbef53a {
-  width: 100%;
-  border-collapse: collapse;
-  color: var(--text);
-  font-size: 0.92rem;
-  line-height: 1.65;
-  text-align: left;
-}
-.cbef53a caption {
-  margin-bottom: 1rem;
-  color: var(--muted);
-  font-size: 0.85rem;
-  text-align: left;
-}
-.cbef53a th,
-.cbef53a td {
-  padding: 1.05rem 1.2rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
-  vertical-align: top;
-}
-.cbef53a th {
-  width: 31%;
-  color: var(--muted);
-  font-weight: 500;
-}
-.cbef53a td {
-  font-weight: 550;
-}
-.cbef53a tr:nth-child(odd) {
-  background: color-mix(in srgb, var(--accent) 3%, var(--surface));
-}
-.cbef53a tr:last-child > * {
-  border-bottom: 0;
-}
-.cbef53a thead th {
-  color: var(--text);
-  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
-  font-weight: 650;
-}
-.cc49bc5 {
-  width: min(100%, 860px);
-  margin-inline: auto;
-}
-.c8da3fd {
-  margin-block: 0 3.6rem;
-  padding-bottom: 3.2rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
-  scroll-margin-top: 2rem;
-}
-.ce5299b {
-  margin: 0 0 1.25rem;
-  color: var(--text);
-  font-family: var(--display);
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.045em;
-}
-.c99bb7e {
-  color: var(--muted);
-  font-family: var(--body);
-  font-size: 1rem;
-  line-height: 1.85;
-}
-.c99bb7e > * + * {
-  margin-top: 1.25rem;
-}
-.c99bb7e h3,
-.c99bb7e h4 {
-  margin-block: 2rem 0.75rem;
-  color: var(--text);
-  font-family: var(--display);
-  font-size: 1.3rem;
-  font-weight: 600;
-  line-height: 1.35;
-  letter-spacing: -0.025em;
-}
-.c99bb7e h4 {
-  font-size: 1.1rem;
-}
-.c99bb7e strong,
-.c32c299 strong {
-  color: var(--text);
-  font-weight: 650;
-}
-.c99bb7e ul,
-.c99bb7e ol,
-.c32c299 ul,
-.c32c299 ol {
-  padding-left: 1.4rem;
-}
-.c99bb7e li,
-.c32c299 li {
-  padding-left: 0.3rem;
-}
-.c99bb7e li + li,
-.c32c299 li + li {
-  margin-top: 0.65rem;
-}
-.c99bb7e li::marker,
-.c32c299 li::marker {
-  color: var(--accent);
-}
-.c99bb7e li > ul,
-.c99bb7e li > ol {
-  margin-top: 0.65rem;
-}
-.c99bb7e blockquote {
-  padding: 1.25rem 1.5rem;
-  border-left: 3px solid var(--accent);
-  border-radius: 0 calc(var(--radius) * 0.45) calc(var(--radius) * 0.45) 0;
-  color: var(--text);
-  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
-}
-.c99bb7e blockquote p + p {
-  margin-top: 0.8rem;
-}
-.c99bb7e table {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  overflow-x: auto;
-  border-collapse: collapse;
-  border: 1px solid color-mix(in srgb, var(--text) 12%, transparent);
-  border-radius: calc(var(--radius) * 0.6);
-  background: var(--surface);
-  font-size: 0.88rem;
-  line-height: 1.6;
-  text-align: left;
-  overscroll-behavior-inline: contain;
-}
-.c99bb7e table th,
-.c99bb7e table td {
-  min-width: 8rem;
-  padding: 0.95rem 1.15rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
-  vertical-align: top;
-}
-.c99bb7e table th {
-  color: var(--text);
-  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
-  font-weight: 600;
-}
-.c99bb7e table tbody tr:nth-child(even) {
-  background: color-mix(in srgb, var(--bg) 65%, var(--surface));
-}
-.c99bb7e table tr:last-child td {
-  border-bottom: 0;
-}
-.c99bb7e table caption {
-  padding: 0.85rem 1.15rem;
-  color: var(--muted);
-  font-size: 0.8rem;
-  text-align: left;
-}
-.c99bb7e code,
-.c99bb7e pre {
-  border-radius: calc(var(--radius) * 0.3);
-  color: var(--text);
-  background: color-mix(in srgb, var(--text) 5%, var(--surface));
-  font-family: var(--body);
-  font-size: 0.9em;
-}
-.c99bb7e code {
-  padding: 0.15em 0.4em;
-}
-.c99bb7e pre {
-  overflow-x: auto;
-  padding: 1.2rem;
-}
-.c99bb7e pre code {
-  padding: 0;
-  background: color-mix(in srgb, var(--surface) 0%, transparent);
-}
-.c99bb7e figure img {
-  display: block;
-  border-radius: calc(var(--radius) * 0.7);
-}
-.c99bb7e figcaption {
-  margin-top: 0.7rem;
-  color: var(--muted);
-  font-size: 0.8rem;
-}
-.c439494 {
-  margin-block: 1rem;
-  border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
-  border-radius: calc(var(--radius) * 0.7);
-  background: var(--surface);
-  transition: border-color 180ms ease, box-shadow 180ms ease;
-}
-.c439494:hover {
-  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
-}
-.c439494[open] {
-  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
-  box-shadow: 0 8px 25px -14px color-mix(in srgb, var(--text) 15%, transparent);
-}
-.ce6b027 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: 1.3rem 1.5rem;
-  border-radius: calc(var(--radius) * 0.7);
-  color: var(--text);
-  font-family: var(--display);
-  font-size: 1.04rem;
-  font-weight: 550;
-  line-height: 1.5;
-  list-style: none;
-  cursor: pointer;
-}
-.ce6b027::-webkit-details-marker {
-  display: none;
-}
-.ce6b027::after {
-  display: grid;
-  flex: 0 0 27px;
-  width: 27px;
-  height: 27px;
-  place-items: center;
-  content: "+";
-  border-radius: 50%;
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 9%, var(--surface));
-  font-family: var(--body);
-  font-size: 1.2rem;
-  font-weight: 400;
-  line-height: 1;
-}
-.c439494[open] > .ce6b027::after {
-  content: "−";
-}
-.c32c299 {
-  padding: 0 1.5rem 1.5rem;
-  color: var(--muted);
-  font-family: var(--body);
-  font-size: 0.95rem;
-  line-height: 1.85;
-}
-.c32c299 > * + * {
-  margin-top: 1rem;
-}
-.c467633 {
-  margin-top: 4rem;
-  padding: 2.2rem 0 2.5rem;
-  border-top: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
-}
-.c467633 .c7e25a5 {
-  margin-bottom: 1.2rem;
-  font-size: 1.35rem;
-}
-.c01f392 {
-  display: grid;
-  gap: 0.7rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.c74ddab {
-  min-width: 0;
-  padding: 0.8rem 1rem;
-  border: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
-  border-radius: calc(var(--radius) * 0.45);
-  color: var(--muted);
-  background: color-mix(in srgb, var(--surface) 70%, var(--bg));
-  font-size: 0.82rem;
-  line-height: 1.7;
-  overflow-wrap: anywhere;
-}
-.c74ddab a,
-a.c74ddab {
-  color: var(--text);
-  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
-}
-.c74ddab a:hover,
-a.c74ddab:hover {
-  color: var(--accent);
-  text-decoration-color: var(--accent);
-}
-.c0890b2 {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem 2rem;
-  margin-top: 1rem;
-  padding-block: 1.7rem 2.2rem;
-  border-top: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
-  color: var(--muted);
-  font-size: 0.78rem;
-}
-.c1332b7 {
-  color: var(--text);
-  font-family: var(--display);
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: -0.025em;
-}
-.c278088 span {
-  color: var(--text);
-}
-@media (min-width: 1280px) {
-  .c5a76fb {
-    padding-top: 5.2rem;
-  }
-  .c99b502 {
-    margin-top: 3.4rem;
-  }
-  .cbf7558 {
-    padding-block: 1.6rem 1.3rem;
-  }
-}
-@media (max-width: 900px) {
-  .c698daa {
-    width: min(100% - 3rem, 1120px);
-  }
-  .cc5f41f {
-    gap: 0.65rem;
-  }
-  .cbf7558 {
-    padding: 1.1rem;
-  }
-  .cc77f1b {
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-  .c785199 {
-    width: 38px;
-    min-height: 38px;
-  }
-  .c785199 img,
-  .c785199 svg {
-    width: 25px;
-    height: 25px;
-  }
-  .c7838df {
-    line-height: 1;
-  }
-  .ccc7fac {
-    margin-bottom: 3rem;
-  }
-}
-@media (max-width: 640px) {
-  html {
-    scroll-padding-top: 1rem;
-  }
-  .c698daa {
-    width: calc(100% - 2rem);
-  }
-  .c6b0936 {
-    min-height: 76px;
-    gap: 0.75rem;
-  }
-  .c54522f {
-    gap: 0.5rem;
-    font-size: 1.08rem;
-  }
-  .ca43060 {
-    min-height: 40px;
-    padding: 0.45rem 0.8rem;
-    font-size: 0.78rem;
-  }
-  .c339afa {
-    padding-top: 1rem;
-  }
-  .c5a76fb {
-    padding-top: 2.4rem;
-  }
-  .c5a76fb h1 {
-    font-size: clamp(2.25rem, 10vw, 3.6rem);
-    letter-spacing: -0.05em;
-  }
-  .cdd4f51 {
-    margin-top: 1.1rem;
-    line-height: 1.75;
-  }
-  .c99b502 {
-    padding: 1.1rem;
-  }
-  .c5ba1f2 {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.3rem;
-    margin-bottom: 1.1rem;
-  }
-  .cc5f41f {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0.7rem;
-  }
-  .cbf7558 {
-    padding: 1.2rem;
-  }
-  #amount,
-  #received {
-    font-size: clamp(1.8rem, 8vw, 2.6rem);
-  }
-  .cc77f1b {
-    flex-direction: row;
-    gap: 0.8rem;
-    padding-block: 0.1rem;
-  }
-  .c785199 {
-    width: 40px;
-    min-height: 40px;
-  }
-  .c63a1b7 {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.2rem;
-    margin-top: 1.2rem;
-  }
-  .cdbbf18 {
-    font-size: 0.78rem;
-  }
-  .c149a6b {
-    min-height: 54px;
-  }
-  .ccc7fac {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0;
-    margin-block: 1.4rem 2.6rem;
-    padding-block: 0.5rem;
-  }
-  .ccc7fac li {
-    justify-content: flex-start;
-    padding: 0.7rem 1rem;
-  }
-  .ccc7fac li + li {
-    border-top: 1px solid color-mix(in srgb, var(--text) 6%, transparent);
-    border-left: 0;
-  }
-  .c197a61 {
-    margin-bottom: 2.8rem;
-    padding: 1.2rem;
-  }
-  .c7e25a5 {
-    margin-bottom: 1.2rem;
-  }
-  .cbef53a {
-    font-size: 0.82rem;
-  }
-  .cbef53a th,
-  .cbef53a td {
-    padding: 0.8rem 0.6rem;
-  }
-  .cbef53a th {
-    width: 38%;
-  }
-  .c8da3fd {
-    margin-bottom: 2.5rem;
-    padding-bottom: 2.3rem;
-  }
-  .c99bb7e {
-    font-size: 0.95rem;
-    line-height: 1.8;
-  }
-  .c99bb7e h3 {
-    font-size: 1.2rem;
-  }
-  .c99bb7e blockquote {
-    padding: 1rem 1.15rem;
-  }
-  .ce6b027 {
-    gap: 0.9rem;
-    padding: 1.1rem;
-    font-size: 0.98rem;
-  }
-  .c32c299 {
-    padding: 0 1.1rem 1.2rem;
-    font-size: 0.9rem;
-  }
-  .c467633 {
-    margin-top: 2.6rem;
-    padding-block: 1.8rem;
-  }
-  .c0890b2 {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.45rem;
-    padding-block: 1.4rem 1.8rem;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    transition: none;
-    animation: none;
-  }
-  .c149a6b:hover {
-    transform: none;
-  }
-}
-@media print {
-  body {
-    background: var(--bg);
-  }
-  .c698daa,
-  .cc49bc5 {
-    width: 100%;
-  }
-  .ca43060,
-  .c149a6b {
-    display: none;
-  }
-  .c5a76fb {
-    padding-top: 1.5rem;
-  }
-  .c5a76fb h1 {
-    font-size: 2.6rem;
-  }
-  .c99b502,
-  .c197a61,
-  .c439494 {
-    box-shadow: none;
-    break-inside: avoid;
-  }
-  .c99bb7e h3,
-  .ce5299b {
-    break-after: avoid;
-  }
-  .c99bb7e table {
-    display: table;
-    overflow: visible;
-  }
-}
-</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://swap-zec.github.io/#website", "url": "https://swap-zec.github.io/", "name": "Zcash Swap — Exchange ZEC for BTC, Shielded or Transparent"}, {"@type": "WebPage", "@id": "https://swap-zec.github.io/#webpage", "url": "https://swap-zec.github.io/", "name": "Zcash Swap — Exchange ZEC for BTC, Shielded or Transparent", "isPartOf": {"@id": "https://swap-zec.github.io/#website"}, "description": "Run a Zcash Swap from a shielded or transparent address to BTC. Compare non-custodial exchangers and atomic swaps, check confirmation times, and keep self-custody of your ZEC the whole way.", "datePublished": "2026-10-11", "dateModified": "2026-10-11"}, {"@type": "SoftwareApplication", "name": "Zcash Swap", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://swap-zec.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Swaps"}, {"@type": "ListItem", "position": 3, "name": "Zcash Swap"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can I run a Zcash Swap directly from a shielded address?", "acceptedAnswer": {"@type": "Answer", "text": "Not directly. Most non-custodial exchangers and atomic swap scripts need a transparent, verifiable transaction, so ZEC held in a shielded pool is usually deshielded to a t-addr first, then swapped from there."}}, {"@type": "Question", "name": "Is a Zcash Swap custodial?", "acceptedAnswer": {"@type": "Answer", "text": "A non-custodial exchanger or an atomic swap never takes ongoing custody of your funds. You send ZEC to a deposit address or lock script and receive BTC in return, with your keys controlling both balances the entire time."}}, {"@type": "Question", "name": "How long does a ZEC to BTC swap take?", "acceptedAnswer": {"@type": "Answer", "text": "The ZEC leg confirms in minutes given Zcash's roughly 75-second block time. The BTC leg is usually the slower half, since Bitcoin blocks land roughly every ten minutes and most traders wait for several confirmations before treating the swap as final."}}, {"@type": "Question", "name": "What is an atomic swap and why use one for ZEC?", "acceptedAnswer": {"@type": "Answer", "text": "An atomic swap uses a time-locked script so either both sides of a ZEC-for-BTC trade complete or both refund automatically. It removes the exchanger as a counterparty, trading directly against another trader's locked funds instead."}}, {"@type": "Question", "name": "Why does a shielded balance need to be deshielded before swapping?", "acceptedAnswer": {"@type": "Answer", "text": "Swap scripts and exchanger software verify a transaction's visible inputs and outputs the same way they would for Bitcoin. A shielded transaction hides exactly that information by design, so it cannot be checked by a script that needs to see it."}}, {"@type": "Question", "name": "Does swapping ZEC for BTC require an account?", "acceptedAnswer": {"@type": "Answer", "text": "No. A non-custodial exchanger needs only a deposit address and a payout address, and an atomic swap needs only your wallet and the swap script. Neither requires sign-up or identity verification for typical amounts."}}, {"@type": "Question", "name": "How do I confirm a Zcash Swap actually settled?", "acceptedAnswer": {"@type": "Answer", "text": "Check the ZEC transaction on a Zcash block explorer and the BTC payout on a Bitcoin block explorer using the transaction IDs the exchanger or swap script provides. Once both show the required confirmations, the swap is settled."}}]}]}</script>
+  <style>
+    :root{--bg:#F7FAFC;--surface:#FFFFFF;--text:#0C1620;--muted:#52606F;--accent:#0369A1;--accent-ink:#FFFFFF;--radius:13px;--display:"Plus Jakarta Sans";--body:"Inter"}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 400 1rem/1.7 var(--body); -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-underline-offset: .22em; }
+    a:hover { text-decoration-thickness: .12em; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+    ::selection { background: var(--accent); color: var(--accent-ink); }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--display); line-height: 1.15; text-wrap: balance; }
+    p, h1, h2, h3 { margin-top: 0; }
+    img, svg { max-width: 100%; vertical-align: middle; }
+    .c698daa { width: min(1180px, calc(100% - 3rem)); margin-inline: auto; }
+    .c41ff94 { position: absolute; z-index: 5; top: .5rem; left: 1rem; padding: .7rem 1rem; background: var(--surface); transform: translateY(-180%); border-radius: var(--radius); }
+    .c41ff94:focus { transform: translateY(0); }
+    .c33ab48 { border-bottom: 1px solid color-mix(in srgb,var(--text) 10%,transparent); }
+    .c480fe1 { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .c88e698 { display: inline-flex; align-items: center; gap: .7rem; color: var(--text); font: 650 1.12rem/1.2 var(--display); text-decoration: none; }
+    .c2f30a9 { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: calc(var(--radius) * .6); background: var(--accent); color: var(--accent-ink); }
+    .c680833 { width: 1.2rem; height: 1.2rem; fill: none; stroke: var(--accent-ink); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: 0 0 auto; }
+    .c803864 { display: flex; align-items: center; gap: 1.8rem; }
+    .c803864 > a { font-size: .88rem; font-weight: 600; text-decoration: none; }
+    .c803864 > a:not(.c45b9ca) { color: var(--muted); }
+    .c45b9ca { display: inline-flex; align-items: center; justify-content: center; gap: .8rem; min-height: 52px; padding: .85rem 1.4rem; border: 1px solid color-mix(in srgb,var(--accent-ink) 12%,transparent); border-radius: var(--radius); background: linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 88%,var(--text))); color: var(--accent-ink); font: 650 .95rem/1.3 var(--body); text-decoration: none; box-shadow: 0 6px 18px color-mix(in srgb,var(--accent) 17%,transparent); transition: transform .18s ease, box-shadow .18s ease; }
+    .c45b9ca:hover { transform: translateY(-2px); box-shadow: 0 9px 24px color-mix(in srgb,var(--accent) 25%,transparent); }
+    .c480fe1 .c45b9ca { min-height: 42px; padding: .65rem 1rem; }
+    .ca4075b { padding-block: 1rem 0; color: var(--muted); font-size: .8rem; overflow-wrap: anywhere; }
+    .cb493ca { color: var(--muted); }
+    .cb493ca a, a.cb493ca { color: var(--muted); text-decoration: none; }
+    .cb493ca a:hover, a.cb493ca:hover { color: var(--accent); text-decoration: underline; }
+    .cb493ca ol, .cb493ca ul { display: flex; flex-wrap: wrap; gap: .5rem 1rem; padding: 0; margin: 0; list-style: none; }
+    .c5a76fb { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,1fr); gap: clamp(2rem,5vw,4.5rem); align-items: start; padding-block: 1.5rem 3rem; }
+    .cea6b13 { display: inline-flex; align-items: center; gap: .55rem; margin-bottom: 1.3rem; color: var(--accent); font-size: .86rem; font-weight: 600; }
+    .cea6b13::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px color-mix(in srgb,var(--accent) 9%,transparent); }
+    h1 { margin-bottom: 1.4rem; font-size: clamp(2.5rem,4.7vw,4.35rem); font-weight: 600; letter-spacing: -.055em; overflow-wrap: anywhere; }
+    h1 em { color: var(--accent); font-style: normal; }
+    .c997a7f { max-width: 48ch; margin-bottom: 2rem; color: var(--muted); font-size: 1.08rem; line-height: 1.8; }
+    .c47855b { position: relative; min-width: 0; padding: clamp(1.1rem,2.4vw,1.5rem); border: 1px solid color-mix(in srgb,var(--accent) 20%,var(--surface)); border-radius: calc(var(--radius) * 1.6); background: linear-gradient(155deg,color-mix(in srgb,var(--accent) 7%,var(--surface)),var(--surface) 40%); box-shadow: 0 24px 64px color-mix(in srgb,var(--text) 9%,transparent),0 4px 12px color-mix(in srgb,var(--accent) 6%,transparent); }
+    .c10a7df { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .7rem; margin-bottom: 1rem; }
+    .c10a7df h2 { margin: 0; font-size: 1.35rem; letter-spacing: -.035em; }
+    .cb42142 { display: inline-flex; align-items: center; gap: .4rem; padding: .3rem .65rem; border: 1px solid color-mix(in srgb,var(--accent) 16%,transparent); border-radius: 999px; background: color-mix(in srgb,var(--accent) 8%,var(--surface)); color: var(--accent); font-size: .72rem; font-weight: 600; }
+    .cb42142::before { content: ""; width: .35rem; height: .35rem; border-radius: 50%; background: var(--accent); }
+    .route { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: .8rem; padding: .8rem; margin-bottom: 1rem; border: 1px solid color-mix(in srgb,var(--text) 9%,transparent); border-radius: var(--radius); background: var(--surface); }
+    .endpoint { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: .45rem; }
+    .endpoint:last-child { align-items: flex-end; }
+    .endpoint-label, .c658513 { color: var(--muted); font-size: .78rem; font-weight: 500; }
+    .logo { display: flex; align-items: center; min-height: 36px; max-width: 100%; overflow-wrap: anywhere; font: 600 1rem/1.3 var(--display); }
+    .logo img, .logo svg { max-height: 36px; width: auto; max-width: 100%; object-fit: contain; }
+    .route-arrow { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: color-mix(in srgb,var(--accent) 9%,var(--surface)); }
+    .route-arrow .c680833 { stroke: var(--accent); }
+    .c658513 { display: block; margin-bottom: .5rem; color: var(--text); }
+    .amount-field { display: flex; align-items: center; gap: .75rem; padding: .8rem 1rem; border: 1px solid color-mix(in srgb,var(--text) 18%,transparent); border-radius: var(--radius); background: var(--bg); transition: border-color .18s ease; }
+    .amount-field:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb,var(--accent) 12%,transparent); }
+    .amount-field input { width: 100%; min-width: 0; padding: .2rem 0; border: 0; background: var(--bg); color: var(--text); font: 550 1.6rem/1.2 var(--display); font-variant-numeric: tabular-nums; }
+    .amount-field input:focus { outline: 0; }
+    .unit { color: var(--muted); font-size: .8rem; }
+    .cfe35d6 { margin: .45rem 0 .85rem; color: var(--muted); font-size: .74rem; }
+    .field-error { margin: .5rem 0; color: var(--text); font-size: .8rem; font-weight: 600; }
+    [hidden] { display: none !important; }
+    .estimate { padding: 1rem; border-radius: var(--radius); background: linear-gradient(120deg,color-mix(in srgb,var(--accent) 12%,var(--surface)),color-mix(in srgb,var(--accent) 4%,var(--surface))); }
+    .estimate-label { margin-bottom: .25rem; color: var(--muted); font-size: .8rem; }
+    .estimate-value { display: block; color: var(--text); font: 600 clamp(1.7rem,3vw,2.5rem)/1.3 var(--display); letter-spacing: -.04em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+    .estimate-value small { color: var(--muted); font: 400 .8rem/1.4 var(--body); letter-spacing: 0; }
+    .estimate dl { display: grid; gap: .5rem; margin: .8rem 0 0; padding-top: .8rem; border-top: 1px solid color-mix(in srgb,var(--accent) 15%,transparent); font-size: .8rem; }
+    .estimate dl div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem 1rem; }
+    .estimate dt { color: var(--muted); }
+    .estimate dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .method { margin-block: .7rem; color: var(--muted); font-size: .75rem; }
+    .method summary { width: fit-content; color: var(--text); cursor: pointer; }
+    .method p { margin: .65rem 0 0; }
+    .c47855b > .c45b9ca { width: 100%; }
+    .c5681de { padding: .8rem 1rem; border: 1px solid color-mix(in srgb,var(--text) 10%,transparent); border-radius: var(--radius); background: var(--surface); }
+    .ce89a38 { margin-bottom: .45rem; }
+    .cc9377d { display: flex; align-items: center; gap: .75rem; }
+    .cbb3318 { flex: 1; min-width: 0; padding: 0; border: 0; background: transparent; color: var(--text); font: 550 1.55rem/1.2 var(--display); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+    .cbb3318:focus { outline: 0; }
+    .ce437a4 { position: relative; display: inline-flex; align-items: center; gap: .5rem; flex: none; padding: .4rem 1.5rem .4rem .5rem; border: 1px solid color-mix(in srgb,var(--text) 13%,transparent); border-radius: 999px; background: var(--bg); }
+    .cd70ce3 { width: 22px; height: 22px; border-radius: 50%; object-fit: contain; flex: none; }
+    .c3eef22 { border: 0; background: transparent; color: var(--text); font: 600 .95rem/1 var(--body); cursor: pointer; appearance: none; -webkit-appearance: none; }
+    .c3eef22:focus { outline: 0; }
+    .ce437a4::after { content: ""; position: absolute; right: .7rem; width: .42rem; height: .42rem; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: translateY(-2px) rotate(45deg); pointer-events: none; }
+    .c5ece40 { margin-top: .4rem; color: var(--muted); font-size: .78rem; font-variant-numeric: tabular-nums; }
+    .c7dc1b7 { position: relative; z-index: 1; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; margin: -.55rem auto; padding: 0; border: 3px solid var(--surface); border-radius: 50%; background: color-mix(in srgb,var(--accent) 13%,var(--surface)); color: var(--accent); cursor: pointer; transition: transform .2s ease, background .2s ease; }
+    .c7dc1b7 svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .c7dc1b7:hover { transform: rotate(180deg); background: color-mix(in srgb,var(--accent) 20%,var(--surface)); }
+    .c8aa5b4 { display: grid; gap: .5rem; margin: 1rem 0 0; padding-top: .9rem; border-top: 1px solid color-mix(in srgb,var(--accent) 15%,transparent); font-size: .82rem; }
+    .c8aa5b4 div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .2rem 1rem; }
+    .c8aa5b4 dt { color: var(--muted); }
+    .c8aa5b4 dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .ca89e60 > .c45b9ca { width: 100%; margin-top: 1.05rem; }
+    .c8f13b8 { padding: 2rem; border: 1px solid color-mix(in srgb,var(--text) 10%,transparent); border-radius: calc(var(--radius) * 1.3); background: var(--surface); }
+    .c7e25a5 { margin-bottom: 1.3rem; font-size: 1.65rem; font-weight: 550; letter-spacing: -.035em; }
+    .c98fb8e { max-width: 100%; overflow-x: auto; }
+    .cbef53a { width: 100%; border-collapse: collapse; text-align: left; font-size: .92rem; }
+    .cbef53a caption { padding-bottom: 1rem; text-align: left; color: var(--muted); }
+    .cbef53a th, .cbef53a td { padding: 1rem 1.1rem; border-bottom: 1px solid color-mix(in srgb,var(--text) 9%,transparent); vertical-align: top; overflow-wrap: anywhere; }
+    .cbef53a th { color: var(--muted); font-weight: 500; }
+    .cbef53a thead { background: color-mix(in srgb,var(--accent) 5%,var(--surface)); }
+    .cbef53a tbody tr:last-child > * { border-bottom: 0; }
+    .c30e9de { max-width: 820px; padding-block: 4rem 2rem; }
+    .c8da3fd { margin-bottom: 3.3rem; }
+    .ce5299b { margin: 0 0 1.1rem; font: 550 clamp(1.6rem,3vw,2.2rem)/1.2 var(--display); letter-spacing: -.035em; }
+    .c99bb7e { color: var(--muted); line-height: 1.85; overflow-wrap: anywhere; }
+    .c99bb7e p { margin-bottom: 1.2rem; }
+    .c99bb7e strong, .c99bb7e h3, .c99bb7e h4 { color: var(--text); }
+    .c99bb7e ul, .c99bb7e ol { padding-left: 1.3rem; }
+    .c99bb7e li { padding-left: .3rem; margin-block: .55rem; }
+    .c99bb7e li::marker { color: var(--accent); }
+    .c99bb7e blockquote { margin: 1.5rem 0; padding: 1rem 1.4rem; border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; background: var(--surface); color: var(--text); }
+    .c99bb7e img { height: auto; border-radius: var(--radius); }
+    .c99bb7e pre { overflow-x: auto; padding: 1rem; border-radius: var(--radius); background: var(--surface); }
+    .c99bb7e code, .c99bb7e pre { font-family: var(--body); }
+    .c439494 { margin-block: .8rem; border: 1px solid color-mix(in srgb,var(--text) 11%,transparent); border-radius: var(--radius); background: var(--surface); overflow: hidden; }
+    .ce6b027 { position: relative; padding: 1.3rem 3.5rem 1.3rem 1.4rem; list-style: none; cursor: pointer; color: var(--text); font: 550 1.04rem/1.5 var(--display); }
+    .ce6b027::-webkit-details-marker { display: none; }
+    .ce6b027::after { content: "+"; position: absolute; right: 1.4rem; top: 1.2rem; color: var(--accent); font-size: 1.3rem; }
+    details[open] > .ce6b027::after { content: "−"; }
+    .c439494[open] { border-color: color-mix(in srgb,var(--accent) 35%,var(--surface)); }
+    .ce6b027:focus-visible { outline-offset: -5px; }
+    .c32c299 { padding: 0 1.4rem 1.4rem; color: var(--muted); overflow-wrap: anywhere; }
+    .c32c299 > :last-child { margin-bottom: 0; }
+    .c004d46 { max-width: 820px; padding-block: 1.5rem 3.5rem; border-top: 1px solid color-mix(in srgb,var(--text) 12%,transparent); }
+    .c004d46 .c7e25a5 { font-size: 1.25rem; }
+    .c01f392 { margin: 0; padding-left: 1.25rem; color: var(--muted); font-size: .88rem; }
+    .c74ddab { padding-block: .4rem; padding-left: .25rem; overflow-wrap: anywhere; }
+    .c74ddab a, a.c74ddab { color: var(--text); text-decoration-color: color-mix(in srgb,var(--accent) 45%,transparent); }
+    .c74ddab a:hover, a.c74ddab:hover { color: var(--accent); }
+    .c3c84ba { border-top: 1px solid color-mix(in srgb,var(--text) 10%,transparent); }
+    .c943378 { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; min-height: 96px; padding-block: 1.5rem; color: var(--muted); font-size: .8rem; }
+    .c943378 p { margin: 0; }
+    .c943378 a { color: var(--muted); }
+    @media (max-width: 850px) { .c5a76fb { grid-template-columns: minmax(0,1fr); gap: 2.5rem; padding-block: 2.5rem 3.5rem; } .c8cc17b { max-width: 650px; } .c47855b { width: 100%; max-width: 600px; justify-self: center; } h1 { font-size: clamp(2.5rem,7vw,4rem); } .c997a7f { max-width: 60ch; } }
+    @media (max-width: 540px) { .c698daa { width: calc(100% - 2rem); } .c480fe1 { min-height: 76px; gap: .7rem; } .c88e698 { font-size: .95rem; gap: .45rem; } .c2f30a9 { width: 2rem; height: 2rem; } .c803864 { gap: .6rem; } .c803864 > a:not(.c45b9ca) { display: none; } .c480fe1 .c45b9ca { padding-inline: .85rem; font-size: .8rem; } .c8f13b8 { padding: 1.25rem; } .cbef53a th, .cbef53a td { padding: .8rem .55rem; } .c8cc17b > .c45b9ca { width: 100%; } .c30e9de { padding-top: 2.8rem; } .c943378 { align-items: flex-start; flex-direction: column; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .c45b9ca, .amount-field { transition: none; } .c45b9ca:hover { transform: none; } }
+  </style>
 </head>
 <body>
-<div class="c698daa">
-  <header class="c6b0936">
-    <div class="c54522f"><span class="cd325d2" aria-hidden="true">⇄</span><span>Exchange</span></div>
-    <a class="ca43060" href="dashboard/">Swap <span aria-hidden="true">↗</span></a>
+  <a class="c41ff94" href="#content">Skip to content</a>
+  <header class="c33ab48">
+    <nav class="c480fe1 c698daa" aria-label="Primary navigation">
+      <a class="c88e698" href="#top" aria-label="Swap station, top of page">
+        <span class="c2f30a9" aria-hidden="true"><svg class="c680833" viewBox="0 0 24 24"><path d="M4 8h15m-4-4 4 4-4 4M20 16H5m4-4-4 4 4 4"/></svg></span>
+        Swap station
+      </a>
+      <div class="c803864">
+        <a href="#facts">Key facts</a>
+        <a href="#sources">Sources</a>
+        <a class="c45b9ca" href="dashboard/">Swap</a>
+      </div>
+    </nav>
   </header>
-  <div class="c339afa"><nav class="cb493ca" aria-label="Breadcrumb"><a href="dashboard/">Home</a> <span>/</span> <span>Swaps</span> <span>/</span> <span>Zcash Swap</span></nav></div>
-  <section class="c5a76fb" aria-labelledby="hero-title">
-    <div class="cea6b13">A direct route to your next asset</div>
-    <h1 id="hero-title">Zcash <em>Swap</em>.</h1>
-    <p class="cdd4f51">A Zcash Swap exchanges ZEC for another asset, most often BTC, without ever handing your coins to a custodian you have to trust with a login. The route you pick changes what the other side of the trade can see: a shielded ZEC balance stays private until the moment it leaves your z-addr, while a transparent balance is visible on-chain like any Bitcoin address. Whichever path you choose, you review the rate and the amount you will receive before you sign, and your keys stay in your own wallet from the first click to the last confirmation.</p>
-    <div class="c99b502" role="group" aria-labelledby="exchange-title">
-      <div class="c5ba1f2">
-        <h2 id="exchange-title">Your exchange</h2>
-        <p>One route. Every detail in view.</p>
+  <div class="c698daa" id="top">
+    <div class="ca4075b"><nav class="cb493ca" aria-label="Breadcrumb"><a href="dashboard/">Home</a> <span>/</span> <span>Swaps</span> <span>/</span> <span>Zcash Swap</span></nav></div>
+    <section class="c5a76fb" aria-labelledby="hero-title">
+      <div class="c8cc17b">
+        <p class="cea6b13">All swap routes</p>
+        <h1 id="hero-title">Zcash <em>Swap</em>.</h1>
+        <p class="c997a7f">A Zcash Swap exchanges ZEC for another asset, most often BTC, without ever handing your coins to a custodian you have to trust with a login.</p>
+        <a class="c45b9ca" href="dashboard/">Swap <svg class="c680833" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
       </div>
-      <div class="cc5f41f">
-        <div class="cbf7558">
-          <label class="c658513" for="amount">You pay</label>
-          <input id="amount" name="amount" type="number" inputmode="decimal" min="1" max="1000000" step="any" value="1000" required aria-describedby="amount-help amount-message" aria-invalid="false">
-          <span class="ccd23ee" id="amount-help">From 1 to 1,000,000 units</span>
+      <aside class="c47855b ca89e60" data-from="ZEC" aria-labelledby="widget-title">
+        <div class="c10a7df">
+          <h2 id="widget-title">Swap</h2>
+          <span class="cb42142">Best route</span>
         </div>
-        <div class="cc77f1b" role="group" aria-label="Exchange route">
-          <span class="c785199"><img src="assets/tokens/zec.svg" alt="Zcash" width="28" height="28"></span>
-          <span class="c7838df" role="img" aria-label="to">→</span>
-          <span class="c785199"><img src="assets/tokens/btc.svg" alt="Bitcoin" width="28" height="28"></span>
+        <div class="c5681de">
+          <div class="ce89a38"><span class="c658513">You pay</span></div>
+          <div class="cc9377d">
+            <input id="pay-amount" class="cbb3318" type="number" inputmode="decimal" min="0" max="1000000000" step="any" value="1" aria-label="Amount you pay">
+            <span class="ce437a4">
+              <img class="cd70ce3" id="pay-ico" width="22" height="22" alt="" src="assets/tokens/eth.svg">
+              <select id="pay-token" class="c3eef22" aria-label="Token you pay"></select>
+            </span>
+          </div>
+          <div class="c5ece40" id="pay-usd">—</div>
         </div>
-        <div class="cbf7558 c26d711">
-          <label class="c658513" for="received">You receive</label>
-          <output id="received" for="amount" aria-live="polite" aria-atomic="true">—</output>
-          <span class="ccd23ee">After network fee · destination units</span>
+        <button type="button" class="c7dc1b7" id="swap-switch" aria-label="Switch the two tokens">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v13m0 0-3-3m3 3 3-3M17 20V7m0 0-3 3m3-3 3 3"/></svg>
+        </button>
+        <div class="c5681de">
+          <div class="ce89a38"><span class="c658513">You receive</span></div>
+          <div class="cc9377d">
+            <output id="get-amount" class="cbb3318" for="pay-amount">—</output>
+            <span class="ce437a4">
+              <img class="cd70ce3" id="get-ico" width="22" height="22" alt="" src="assets/tokens/usdt.svg">
+              <select id="get-token" class="c3eef22" aria-label="Token you receive"></select>
+            </span>
+          </div>
+          <div class="c5ece40" id="get-usd">—</div>
         </div>
-      </div>
-      <div class="c63a1b7">
-        <dl class="cdbbf18">
-          <div><dt>Rate</dt><dd><output id="rate" for="amount">—</output></dd></div>
-          <div><dt>Network fee</dt><dd><output id="network-fee" for="amount">—</output></dd></div>
+        <dl class="c8aa5b4">
+          <div><dt>Rate</dt><dd id="swap-rate">—</dd></div>
+          <div><dt>Network fee</dt><dd id="swap-fee">0.3%</dd></div>
         </dl>
-        <a class="c149a6b" href="dashboard/"><span>Swap</span><span aria-hidden="true">→</span></a>
-      </div>
-      <p class="c59941d" id="amount-message" role="status" aria-live="polite"></p>
-    </div>
-  </section>
-  <ul class="ccc7fac" aria-label="Exchange features">
-    <li>Non-custodial</li>
-    <li>On-chain</li>
-    <li>No sign-up</li>
-    <li>Transparent fees</li>
-  </ul>
-  <section class="c197a61" aria-labelledby="facts-title">
-    <h2 class="c7e25a5" id="facts-title">Key facts</h2>
-    <div class="c98fb8e" tabindex="0" role="region" aria-label="Key facts table"><table class="cbef53a"><tbody><tr><th scope="row">Asset</th><td>ZEC — Zcash, a privacy-focused layer-1</td></tr>
+        <noscript><p class="cfe35d6">Enable JavaScript to estimate the swap.</p></noscript>
+        <a class="c45b9ca" href="dashboard/">Swap <svg class="c680833" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </aside>
+    </section>
+    <section class="c8f13b8" id="facts" aria-labelledby="facts-title">
+      <h2 class="c7e25a5" id="facts-title">Key facts</h2>
+      <div class="c98fb8e"><table class="cbef53a"><tbody><tr><th scope="row">Asset</th><td>ZEC — Zcash, a privacy-focused layer-1</td></tr>
 <tr><th scope="row">Address types</th><td>Shielded (z-addr) and transparent (t-addr)</td></tr>
 <tr><th scope="row">Swap venues</th><td>Non-custodial exchangers and atomic swap protocols</td></tr>
 <tr><th scope="row">Counterparty asset</th><td>BTC — Bitcoin, most common pair</td></tr>
 <tr><th scope="row">Confirmation time</th><td>Minutes per chain, more for finality</td></tr>
 <tr><th scope="row">Custody</th><td>Self-custody — you hold your keys throughout</td></tr></tbody></table></div>
-  </section>
-  <main class="cc49bc5" id="content">
+    </section>
+  </div>
+  <main class="c30e9de c698daa" id="content">
     <section class="c8da3fd"><h2 class="ce5299b">What a Zcash Swap Is</h2><div class="c99bb7e"><strong>A Zcash Swap exchanges ZEC for another asset such as BTC, carried out through a non-custodial exchanger, a swap pool, or a trustless atomic swap that settles directly between the two chains.</strong> Unlike a deposit to a centralized exchange, a non-custodial route never asks you to hand over your coins before the trade completes — you sign a transaction, the counterparty's contract or script does the same, and the swap either finishes on both sides or not at all. ZEC itself is the native coin of the Zcash network, whose own project page at <a href="https://z.cash/" rel="nofollow noopener" target="_blank">z.cash</a> documents both address formats in detail. What sets a Zcash Swap apart from swapping most other assets is the address you swap from: ZEC can move from a shielded z-addr, where the amount and participants are hidden, or from a transparent t-addr, where the balance is as visible as a normal Bitcoin UTXO.<h3>Shielded vs Transparent Addresses</h3>Zcash supports two address formats on the same network. A transparent address works like a Bitcoin address: anyone can see the balance and every transaction tied to it on a public explorer. A shielded address uses zero-knowledge proofs to hide the sender, receiver and amount while still proving the transaction is valid, a design documented in detail on <a href="https://en.wikipedia.org/wiki/Zcash" rel="nofollow noopener" target="_blank">Wikipedia's Zcash entry</a>. Both address types spend the same ZEC; they just expose different information about the spend.<h3>Why the Address Type Matters for Swaps</h3>Most exchangers and swap protocols only accept ZEC from a transparent address, because the counterparty's software needs to verify the transaction's inputs and outputs the way it would for Bitcoin. If your ZEC sits in a shielded pool, you typically deshield it to a t-addr first, then run the swap from there. That extra step is the trade-off privacy-conscious users accept for liquidity and speed.</div></section>
 <section class="c8da3fd"><h2 class="ce5299b">Shielded vs Transparent: The Core Trade-off for a Swap</h2><div class="c99bb7e">The table below lays out what each address type gives up and keeps when it feeds into a swap. Neither option is wrong; they serve different goals, and plenty of users hold ZEC in both forms depending on whether a balance is meant to move soon or sit untouched. A balance that sits in cold storage for months gains little from being transparent, while a balance you plan to trade within the week gains little from staying shielded if the swap route will need it transparent anyway. Thinking of the two address types as separate accounts for separate purposes, rather than one setting you pick once, is the simplest way to use Zcash without fighting its own design.<table><thead><tr><th>Property</th><th>Shielded (z-addr)</th><th>Transparent (t-addr)</th></tr></thead><tbody><tr><td>Visibility on-chain</td><td>Sender, receiver and amount hidden</td><td>Fully visible, like a Bitcoin UTXO</td></tr><tr><td>Swap compatibility</td><td>Usually requires deshielding first</td><td>Accepted directly by most exchangers</td></tr><tr><td>Typical use</td><td>Long-term holding, private transfers</td><td>Active trading and swaps</td></tr></tbody></table></div></section>
 <section class="c8da3fd"><h2 class="ce5299b">Non-Custodial Exchangers for a Zcash Swap</h2><div class="c99bb7e">A non-custodial exchanger quotes a rate, gives you a deposit address, and sends the other asset the moment your ZEC confirms — at no point does it hold a balance tied to your identity the way a centralized account would. This is the most common way people run a Zcash Swap into BTC today, because it needs no sign-up and no KYC form for most amounts, and the whole exchange reads as two independent on-chain transactions rather than a ledger entry on someone else's server.<h3>How a Non-Custodial ZEC Swap Works</h3>You enter the amount of ZEC you want to send and the BTC address that should receive the output. The exchanger locks in a rate for a short window, shows you a deposit address, and starts watching the chain. Once your ZEC transaction reaches the required confirmations, it broadcasts the BTC payout automatically — you never create an account and the exchanger never custodies funds beyond the seconds it takes to route the trade.<h3>Choosing an Exchanger</h3>Favor an exchanger with a transparent fee shown before you commit, a rate that updates live rather than one locked far in advance, and a track record you can check against independent volume data such as the swap and bridge rankings on <a href="https://defillama.com/" rel="nofollow noopener" target="_blank">DefiLlama</a>. Avoid any service that asks for a shielded-only deposit with no way to confirm it, or that asks you to pre-pay a fee before showing the output address.</div></section>
@@ -1117,71 +241,66 @@ a.c74ddab:hover {
 <details class="c439494"><summary class="ce6b027">Does swapping ZEC for BTC require an account?</summary><div class="c32c299">No. A non-custodial exchanger needs only a deposit address and a payout address, and an atomic swap needs only your wallet and the swap script. Neither requires sign-up or identity verification for typical amounts.</div></details>
 <details class="c439494"><summary class="ce6b027">How do I confirm a Zcash Swap actually settled?</summary><div class="c32c299">Check the ZEC transaction on a Zcash block explorer and the BTC payout on a Bitcoin block explorer using the transaction IDs the exchanger or swap script provides. Once both show the required confirmations, the swap is settled.</div></details>
   </main>
-  <section class="c467633 cc49bc5" aria-labelledby="sources-title">
+  <section class="c004d46 c698daa" id="sources" aria-labelledby="sources-title">
     <h2 class="c7e25a5" id="sources-title">Sources</h2>
     <ul class="c01f392"><li><a class="c74ddab" href="https://z.cash/" rel="nofollow noopener" target="_blank">Zcash — official site</a></li>
 <li><a class="c74ddab" href="https://en.wikipedia.org/wiki/Zcash" rel="nofollow noopener" target="_blank">Zcash — Wikipedia</a></li>
 <li><a class="c74ddab" href="https://www.blockchair.com/zcash" rel="nofollow noopener" target="_blank">Blockchair Zcash explorer</a></li>
 <li><a class="c74ddab" href="https://defillama.com/" rel="nofollow noopener" target="_blank">DefiLlama</a></li></ul>
   </section>
-  <footer class="c0890b2">
-    <span class="c1332b7">Exchange</span>
-    <p class="c278088">Updated <span>Updated Oct 10, 2026</span></p>
+  <footer class="c3c84ba">
+    <div class="c943378 c698daa">
+      <p>Updated Oct 11, 2026</p>
+      <a href="#top">Back to top ↑</a>
+    </div>
   </footer>
-</div>
-<script>
-(() => {
-  'use strict';
-  const amount = document.getElementById('amount');
-  const received = document.getElementById('received');
-  const rateOutput = document.getElementById('rate');
-  const feeOutput = document.getElementById('network-fee');
-  const message = document.getElementById('amount-message');
-  const exchangeRate = 0.985;
-  const baseFee = 0.25;
-  const networkFactor = 0.001;
-  const formatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 6 });
-  let timer;
-
-  function clearQuote() {
-    received.value = '—';
-    rateOutput.value = '—';
-    feeOutput.value = '—';
-  }
-
-  function updateQuote() {
-    clearTimeout(timer);
-    const raw = amount.value.trim();
-    const value = amount.valueAsNumber;
-    const valid = raw !== '' && Number.isFinite(value) && value >= 1 && value <= 1000000 && !amount.validity.badInput;
-    amount.setAttribute('aria-invalid', String(!valid));
-    message.dataset.invalid = String(!valid);
-    if (!valid) {
-      clearQuote();
-      const error = 'Enter an amount from 1 to 1,000,000.';
-      amount.setCustomValidity(error);
-      message.textContent = error;
-      return;
-    }
-    amount.setCustomValidity('');
-    const networkFee = baseFee + value * networkFactor;
-    const netAmount = Math.max(0, value * exchangeRate - networkFee);
-    received.value = formatter.format(netAmount);
-    rateOutput.value = '1 → ' + formatter.format(exchangeRate);
-    feeOutput.value = formatter.format(networkFee) + ' destination units';
-    message.textContent = '';
-  }
-
-  amount.addEventListener('input', () => {
-    clearTimeout(timer);
-    amount.setCustomValidity('');
-    clearQuote();
-    timer = setTimeout(updateQuote, 200);
-  });
-  amount.addEventListener('change', updateQuote);
-  amount.addEventListener('blur', updateQuote);
-  updateQuote();
-})();
-</script>
+  <script>
+    (() => {
+      const TOKENS = [
+        { s: 'ETH', f: 'eth', p: 2550 }, { s: 'BTC', f: 'btc', p: 62000 },
+        { s: 'USDT', f: 'usdt', p: 1 }, { s: 'USDC', f: 'usdc', p: 1 },
+        { s: 'BNB', f: 'bnb', p: 585 }, { s: 'SOL', f: 'sol', p: 145 },
+        { s: 'ARB', f: 'arb', p: 0.62 }, { s: 'OP', f: 'optimism', p: 1.65 },
+        { s: 'MATIC', f: 'polygon', p: 0.42 }, { s: 'AVAX', f: 'avalanche', p: 27 },
+        { s: 'SUI', f: 'sui', p: 1.35 }, { s: 'LTC', f: 'ltc', p: 72 },
+        { s: 'TRX', f: 'trx', p: 0.16 }, { s: 'XMR', f: 'xmr', p: 155 },
+        { s: 'XRP', f: 'xrp', p: 0.52 }, { s: 'ZEC', f: 'zec', p: 32 }
+      ];
+      const FEE = 0.003;
+      const $ = (id) => document.getElementById(id);
+      const payAmt = $('pay-amount'), payTok = $('pay-token'), payUsd = $('pay-usd'), payIco = $('pay-ico');
+      const getAmt = $('get-amount'), getTok = $('get-token'), getUsd = $('get-usd'), getIco = $('get-ico');
+      const rateEl = $('swap-rate');
+      const tok = (s) => TOKENS.find((t) => t.s === s);
+      const num = (n) => new Intl.NumberFormat('en', { maximumFractionDigits: n >= 1 ? 4 : 6 }).format(n);
+      const usd = (v) => '~$' + new Intl.NumberFormat('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v);
+      TOKENS.forEach((t) => {
+        [payTok, getTok].forEach((sel) => { const o = document.createElement('option'); o.value = t.s; o.textContent = t.s; sel.appendChild(o); });
+      });
+      const widget = document.querySelector('.ca89e60');
+      const defFrom = (widget && widget.dataset.from) || 'ETH';
+      const fromOk = TOKENS.some((t) => t.s === defFrom) ? defFrom : 'ETH';
+      payTok.value = fromOk;
+      getTok.value = (fromOk === 'USDT') ? 'ETH' : 'USDT';
+      const calc = () => {
+        const pf = tok(payTok.value), gt = tok(getTok.value);
+        payIco.src = 'assets/tokens/' + pf.f + '.svg'; payIco.alt = pf.s;
+        getIco.src = 'assets/tokens/' + gt.f + '.svg'; getIco.alt = gt.s;
+        rateEl.textContent = '1 ' + pf.s + ' ≈ ' + num(pf.p / gt.p) + ' ' + gt.s;
+        const a = parseFloat(payAmt.value);
+        if (!Number.isFinite(a) || a <= 0) { getAmt.textContent = '—'; payUsd.textContent = '—'; getUsd.textContent = '—'; return; }
+        const out = a * (pf.p / gt.p) * (1 - FEE);
+        getAmt.textContent = num(out) + ' ' + gt.s;
+        payUsd.textContent = usd(a * pf.p);
+        getUsd.textContent = usd(out * gt.p);
+      };
+      const distinct = (changed, other) => { if (changed.value === other.value) { other.value = (TOKENS.find((t) => t.s !== changed.value) || TOKENS[0]).s; } };
+      payAmt.addEventListener('input', calc);
+      payTok.addEventListener('change', () => { distinct(payTok, getTok); calc(); });
+      getTok.addEventListener('change', () => { distinct(getTok, payTok); calc(); });
+      $('swap-switch').addEventListener('click', () => { const t = payTok.value; payTok.value = getTok.value; getTok.value = t; calc(); });
+      calc();
+    })();
+  </script>
 </body>
 </html>
