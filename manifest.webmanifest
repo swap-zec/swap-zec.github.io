@@ -1,0 +1,1 @@
+{"name":"Zcash Swap","short_name":"Zcash Swap","description":"Zcash Swap lets you exchange ZEC to and from BTC, ETH, USDT and other coins via instant-exchange routes. Send to a deposit address, receive in your wallet.","start_url":"/","display":"standalone","background_color":"#f7f6f2","theme_color":"#f7f6f2","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml"}]}

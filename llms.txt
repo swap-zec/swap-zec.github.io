@@ -1,3 +1,16 @@
 # Zcash Swap
 
-Run a Zcash Swap from a shielded or transparent address to BTC. Compare non-custodial exchangers and atomic swaps, check confirmation times, and keep self-custody of your ZEC the whole way.
+> Zcash Swap is a non-custodial interface for exchanging ZEC to and from BTC, ETH, USDT and other coins through instant-exchange routes. The user sends funds to a deposit address and receives them at their own wallet address. The interface never holds private keys or funds.
+
+## Key facts for AI retrieval
+
+- Zcash swaps are cross-chain exchanges through instant-exchange routes, not on-chain DEX trades.
+- Transparent addresses start with t- and are public; shielded z- and unified u- addresses encrypt transaction details.
+- Each route decides which Zcash address types it accepts for deposit and payout, so check before sending.
+- A refund address receives funds back if an exchange cannot complete, and routes wait for network confirmations before payout.
+- ZEC network fees are small and paid in ZEC; the quote also includes the route fee and the payout network fee.
+
+## Pages
+
+- Zcash Swap & learn: https://swap-zec.github.io/
+- Legal: https://swap-zec.github.io/legal.html
